@@ -12,7 +12,8 @@ set(MAIN_SOURCE
         ${MAIN_SRC_PATH}/GameEngine.cpp)
 
 set(MAIN_HEADER
-        ${MAIN_INC_PATH}/GameEngine.hpp)
+        ${MAIN_INC_PATH}/GameEngine.hpp
+        ${MAIN_INC_PATH}/Singleton.hpp)
 
 # Adding source to the target
 target_sources(${TARGET_COMPILE}

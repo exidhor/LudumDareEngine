@@ -28,6 +28,7 @@ void Game::OnPostInitialize(void)
 void Game::OnPreUpdate(float dt)
 {
     // Code
+    (void)dt;
 }
 
 /// \brief  Called after engine update
@@ -35,6 +36,7 @@ void Game::OnPreUpdate(float dt)
 void Game::OnPostUpdate(float dt)
 {
     // Code
+    (void)dt;
 }
 
 /// \brief  Called before the engine release

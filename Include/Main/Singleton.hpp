@@ -22,10 +22,10 @@ public:
      */
     static T * Instance()
     {
-        if(m_instance == nullptr)
-            m_instance = new T();
+        if(m_sInstance == nullptr)
+            m_sInstance = new T();
 
-        return m_instance;
+        return m_sInstance;
     }
 
 protected:
@@ -38,10 +38,10 @@ protected:
         // None
     };
 
-    static T * m_instance; ///< The static field containing the T instance
+    static T * m_sInstance; ///< The static field containing the T instance
 
 };
 
-template <typename T> T * Singleton<T>::m_instance = nullptr;
+template <typename T> T * Singleton<T>::m_sInstance = nullptr;
 
 #endif // __SINGLETON_HPP

@@ -1,17 +1,17 @@
-#include "Main/GameEngine.hpp"
 #include "Main/Engine.hpp"
+#include "Main/GameEngine.hpp"
 
 int main(void)
 {
-    // Instantiating a new Game engine
-    GameEngine gameEngine;
+    // Getting an instance of the Game Engine
+    GameEngine * gameEngine = GameEngine::Instance();
 
     // Initialize the game engine
-    gameEngine.Initialize();
+    gameEngine->Initialize();
 
     // Start the game engine
     // and enter the game loop
-    gameEngine.Start();
+    gameEngine->Start();
 
 
     Engine::GetTexture("");

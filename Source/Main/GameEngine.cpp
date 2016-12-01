@@ -5,15 +5,11 @@
 #include "Main/GameEngine.hpp"
 #include "Main/EngineString.hpp"
 
-// Default initialization
-GameEngine * GameEngine::sGameEngineInstance = nullptr;
-
 /* explicit */ GameEngine::GameEngine(void)
 : m_pGame(nullptr)
 , m_isInitialized(false)
 {
-    // Binding static instance
-    sGameEngineInstance = this;
+    // None
 }
 
 GameEngine::~GameEngine(void)
@@ -57,6 +53,12 @@ void GameEngine::Initialize(void)
         std::cerr << EngineString::ENGINE_FAILURE_INIT << std::endl;
         return;
     }
+
+    // Setting the game engine instance
+    Engine::pGameEngineInstance = this;
+
+
+    m_isInitialized = true;
 
     // See OnPostInitialize
     OnPostInitialize();

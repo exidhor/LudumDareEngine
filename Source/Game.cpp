@@ -21,7 +21,7 @@ void Game::OnPreInitialize(void)
 /// \brief  Called after engine initialization
 void Game::OnPostInitialize(void)
 {
-
+    //
 }
 
 /// \brief  Called before engine update

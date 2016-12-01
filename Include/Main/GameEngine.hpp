@@ -10,9 +10,11 @@
 // Forward declaration
 class Game;
 
+#include "Main/Singleton.hpp"
+
 /// \class  GameEngine
 /// \brief  Main class of the engine
-class GameEngine
+class GameEngine : public Singleton<GameEngine>
 {
 public:
 
@@ -54,11 +56,6 @@ private:
 
     /// \Brief  Called after the engine release
     void OnPostRelease(void);
-
-    /// \brief  Declaring class Engine as
-    ///         friend of the game engine
-    friend class Engine;
-    static GameEngine * sGameEngineInstance;    ///< Way to access the engine
 };
 
 #endif // __GAME_ENGINE_HPP

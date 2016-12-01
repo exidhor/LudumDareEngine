@@ -7,6 +7,9 @@
 #ifndef __ENGINE_HPP
 #define __ENGINE_HPP
 
+// Forward declaration
+class GameEngine;
+
 #include <SFML/Graphics.hpp>
 
 /// \class  Engine
@@ -20,7 +23,17 @@ public:
     /// \return A valid pointer on a texture if the key exists, else nullptr
     static sf::Texture * GetTexture(std::string const& key);
 
-    // On ajoute toutes nos méthodes ici
+private:
+
+    // Encapsulating Engine
+    friend class GameEngine;
+
+    /// \brief  Set the static pointer on the game engine
+    /// \param  pInstance A pointer on the game engine
+    static void SetGameEngineInstance(GameEngine * pInstance);
+
+    // Pointer on the game engine
+    static GameEngine * pGameEngineInstance;
 };
 
 #endif // __ENGINE_HPP

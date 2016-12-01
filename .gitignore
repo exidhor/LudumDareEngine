@@ -39,6 +39,9 @@ cmake-build-release/
 # Which is user specific
 CMakeConfig.cmake
 
+# JP file
+MainJP.cpp
+
 # Ignore Visual Studio temporary files
 # User-specific files
 *.suo
@@ -279,7 +282,6 @@ paket-files/
 .fake/
 
 # JetBrains Rider
-.idea/
 *.sln.iml
 
 # CodeRush

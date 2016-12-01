@@ -58,8 +58,6 @@ void GameEngine::Initialize(void)
         return;
     }
 
-
-
     // See OnPostInitialize
     OnPostInitialize();
 }

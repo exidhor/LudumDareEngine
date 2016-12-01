@@ -14,7 +14,7 @@ class Game;
 
 /// \class  GameEngine
 /// \brief  Main class of the engine
-class GameEngine : public Singleton<GameEngine>
+class GameEngine
 {
 public:
 

@@ -10,7 +10,7 @@ void Engine::SetGameEngineInstance(GameEngine * pInstance)
     pGameEngineInstance = pInstance;
 }
 
-sf::Texture * Engine::GetTexture(std::string const& key)
+sf::Texture * Engine::GetTexture(const std::string & key)
 {
     std::cout << pGameEngineInstance << std::endl;
     return nullptr;

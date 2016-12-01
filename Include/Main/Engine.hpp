@@ -21,10 +21,9 @@ public:
     /// \brief  Return a pointer on sf::Texture
     /// \param  key A const reference on the key of the texture
     /// \return A valid pointer on a texture if the key exists, else nullptr
-    static sf::Texture * GetTexture(std::string const& key);
+    static sf::Texture * GetTexture(const std::string & key);
 
 private:
-
     // Encapsulating Engine
     friend class GameEngine;
 

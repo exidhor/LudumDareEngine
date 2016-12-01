@@ -49,6 +49,7 @@ MainJP.cpp
 *.userosscache
 *.sln.docstates
 *.vcxproj.filters
+*.vcxproj
 
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs

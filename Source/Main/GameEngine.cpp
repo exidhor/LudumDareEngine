@@ -55,10 +55,8 @@ void GameEngine::Initialize(void)
     }
 
     // Setting the game engine instance
-    Engine::pGameEngineInstance = this;
-
-
     m_isInitialized = true;
+    Engine::pGameEngineInstance = this;
 
     // See OnPostInitialize
     OnPostInitialize();

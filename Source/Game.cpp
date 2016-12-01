@@ -1,3 +1,4 @@
+#include <Main/GameEngine.hpp>
 #include "Game.hpp"
 
 /// \brief  Default constructor

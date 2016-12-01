@@ -3,15 +3,15 @@
 
 int main(void)
 {
-    // Getting an instance of the Game Engine
-    GameEngine * gameEngine = GameEngine::Instance();
+    // Instantiating a game engine
+    GameEngine gameEngine;
 
     // Initialize the game engine
-    gameEngine->Initialize();
+    gameEngine.Initialize();
 
     // Start the game engine
     // and enter the game loop
-    gameEngine->Start();
+    gameEngine.Start();
 
 
     Engine::GetTexture("");

@@ -9,10 +9,13 @@ SET(AI_SRC_PATH ${CMAKE_SOURCE_DIR}/Source/AI)
 SET(AI_INC_PATH ${CMAKE_SOURCE_DIR}/Include/AI)
 
 set(AI_SOURCE
-        ${AI_SRC_PATH}/KinematicSeek.cpp)
+        ${AI_SRC_PATH}/MathHelper.cpp
+        ${AI_SRC_PATH}/SteeringOutput.cpp)
 
 set(AI_HEADER
-        ${AI_INC_PATH}/KinematicSeek.hpp)
+        ${AI_INC_PATH}/MathHelper.hpp
+        ${AI_INC_PATH}/SteeringOutput.hpp
+        ${AI_INC_PATH}/SteeringBehavior.hpp)
 
 # Adding source to the target
 target_sources(${TARGET_COMPILE}

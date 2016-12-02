@@ -10,10 +10,12 @@ SET(AI_INC_PATH ${CMAKE_SOURCE_DIR}/Include/AI)
 
 set(AI_SOURCE
         ${AI_SRC_PATH}/MathHelper.cpp
+        ${AI_SRC_PATH}/AICOmponent.cpp
         ${AI_SRC_PATH}/SteeringOutput.cpp)
 
 set(AI_HEADER
         ${AI_INC_PATH}/MathHelper.hpp
+        ${AI_INC_PATH}/AIComponent.hpp
         ${AI_INC_PATH}/SteeringOutput.hpp
         ${AI_INC_PATH}/SteeringBehavior.hpp)
 

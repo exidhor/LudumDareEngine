@@ -16,7 +16,7 @@ set(KINEMATIC_SOURCE
 
 set(KINEMATIC_HEADER
         ${KINEMATIC_INC_PATH}/Kinematic.hpp
-        ${KINEMATIC_INC_PATH}/KinematicMovement.hpp
+        ${KINEMATIC_INC_PATH}/KinematicSteering.hpp
         ${KINEMATIC_INC_PATH}/KinematicBehaviors.hpp
         ${KINEMATIC_INC_PATH}/TargetedKinematicMovement.hpp)
 

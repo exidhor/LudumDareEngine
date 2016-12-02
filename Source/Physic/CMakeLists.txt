@@ -8,13 +8,11 @@ CMAKE_MINIMUM_REQUIRED(VERSION 3.1)
 SET(PHYSIC_SRC_PATH ${CMAKE_SOURCE_DIR}/Source/Physic)
 SET(PHYSIC_INC_PATH ${CMAKE_SOURCE_DIR}/Include/Physic)
 
-set(PHYSIC_SOURCE
-        ${PHYSIC_SRC_PATH}/Location.cpp)
+set(PHYSIC_SOURCE "")
 
 set(PHYSIC_HEADER
         ${PHYSIC_INC_PATH}/Vec2.hpp
         ${PHYSIC_INC_PATH}/Vec2.inl
-        ${PHYSIC_INC_PATH}/Location.hpp
         ${PHYSIC_INC_PATH}/PhysicsComponent.hpp)
 
 # Adding source to the target

@@ -43,6 +43,7 @@ INCLUDE(Memory/CMakeLists.txt)
 INCLUDE(Physic/CMakeLists.txt)
 INCLUDE(AI/Kinematic/CMakeLists.txt)
 INCLUDE(Physic/QuadTree/CMakeLists.txt)
+INCLUDE(Physic/Location/CMakeLists.txt)
 
 # Setting target dependencies
 # Because the published version must be
@@ -73,6 +74,8 @@ ADD_CUSTOM_COMMAND(TARGET ${TARGET_PUBLISHING} PRE_BUILD
         COMMAND ${CMAKE_COMMAND} -E make_directory ${TARGET_PATH}/Engine/Include/Memory
         COMMAND ${CMAKE_COMMAND} -E make_directory ${TARGET_PATH}/Engine/Source/AI/Kinematic
         COMMAND ${CMAKE_COMMAND} -E make_directory ${TARGET_PATH}/Engine/Include/AI/Kinematic
+        COMMAND ${CMAKE_COMMAND} -E make_directory ${TARGET_PATH}/Engine/Source/Physic/Location
+        COMMAND ${CMAKE_COMMAND} -E make_directory ${TARGET_PATH}/Engine/Include/Physic/Location
         COMMAND ${CMAKE_COMMAND} -E make_directory ${TARGET_PATH}/Engine/Source/Physic/QuadTree
         COMMAND ${CMAKE_COMMAND} -E make_directory ${TARGET_PATH}/Engine/Include/Physic/QuadTree
         COMMENT "[INFO] Creating engine folders ..." VERBATIM)

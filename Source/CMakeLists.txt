@@ -39,6 +39,7 @@ SET(TEMPLATE_PATH ${CMAKE_SOURCE_DIR}/Include/Template)
 # Including all sources
 INCLUDE(AI/CMakeLists.txt)
 INCLUDE(Main/CMakeLists.txt)
+INCLUDE(Memory/CMakeLists.txt)
 INCLUDE(Physic/CMakeLists.txt)
 INCLUDE(Physic/QuadTree/CMakeLists.txt)
 
@@ -65,6 +66,8 @@ ADD_CUSTOM_COMMAND(TARGET ${TARGET_PUBLISHING} PRE_BUILD
         COMMAND ${CMAKE_COMMAND} -E make_directory ${TARGET_PATH}/Engine/Include/AI
         COMMAND ${CMAKE_COMMAND} -E make_directory ${TARGET_PATH}/Engine/Source/Main
         COMMAND ${CMAKE_COMMAND} -E make_directory ${TARGET_PATH}/Engine/Include/Main
+        COMMAND ${CMAKE_COMMAND} -E make_directory ${TARGET_PATH}/Engine/Source/Memory
+        COMMAND ${CMAKE_COMMAND} -E make_directory ${TARGET_PATH}/Engine/Include/Memory
         COMMAND ${CMAKE_COMMAND} -E make_directory ${TARGET_PATH}/Engine/Source/Physic
         COMMAND ${CMAKE_COMMAND} -E make_directory ${TARGET_PATH}/Engine/Include/Physic
         COMMAND ${CMAKE_COMMAND} -E make_directory ${TARGET_PATH}/Engine/Source/Physic/QuadTree

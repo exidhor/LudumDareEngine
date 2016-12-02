@@ -1,7 +1,7 @@
 #pragma once
 #include "AI/SteeringOutput.hpp"
 #include "AI/Kinematic/Kinematic.hpp"
-
+#include "Physic/Vec2.hpp"
 
 class KinematicMovement
 {

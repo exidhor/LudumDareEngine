@@ -1,5 +1,6 @@
 #pragma once
 #include "AI/Kinematic/KinematicMovement.hpp"
+#include "Physic/Vec2.hpp"
 
 class TargetedKinematicMovement : public KinematicMovement
 {

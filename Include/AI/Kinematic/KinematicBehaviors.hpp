@@ -1,12 +1,13 @@
 #pragma once
 #include "AI/Kinematic/TargetedKinematicMovement.hpp"
 #include "AI/MathHelper.hpp"
+#include "Physic/Vec2.hpp"
 
 namespace KinematicHelper
 {
-	static void ClipToMax_CheckZero(Vec2 * linear, float maxSpeed);
+	void ClipToMax_CheckZero(Vec2 * linear, float maxSpeed);
 
-	static void ClipToMax_CheckMax(Vec2 * linear, float maxSpeed);
+	void ClipToMax_CheckMax(Vec2 * linear, float maxSpeed);
 }
 
 

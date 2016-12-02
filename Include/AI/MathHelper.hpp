@@ -3,6 +3,6 @@
 
 namespace MathHelper
 {
-	static float RandomFloat(float max);
-	static float RandomBinomial(float max);
+	float RandomFloat(float max);
+	float RandomBinomial(float max);
 }

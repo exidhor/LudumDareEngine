@@ -2,6 +2,7 @@
 #include <SFML/Graphics.hpp>
 #include "AI/SteeringOutput.hpp"
 #include "Physic/Location.hpp"
+#include "Physic/Vec2.hpp"
 
 class Kinematic : public Location
 {

@@ -4,7 +4,7 @@ inline Vec2::Vec2()
 	// nothing
 }
 
-Vec2::Vec2(float x, float y)
+inline Vec2::Vec2(float x, float y)
 	: x(x), y(y)
 {
 	// nothing
@@ -16,28 +16,28 @@ inline Vec2::Vec2(sf::Vector2f const& vector2f)
 	// nothing
 }
 
-Vec2::operator sf::Vector2f() const
+inline Vec2::operator sf::Vector2f() const
 {
 	return sf::Vector2f(x, y);
 }
 
-void Vec2::Clear()
+inline void Vec2::Clear()
 {
 	x = 0;
 	y = 0;
 }
 
-float Vec2::Length() const
+inline float Vec2::Length() const
 {
 	return (float) sqrt(SquareLength());
 }
 
-float Vec2::SquareLength() const
+inline float Vec2::SquareLength() const
 {
 	return x*x + y*y;
 }
 
-void Vec2::Normalise()
+inline void Vec2::Normalise()
 {
 	float length = this->Length();
 

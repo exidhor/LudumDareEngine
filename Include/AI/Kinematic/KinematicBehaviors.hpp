@@ -22,7 +22,7 @@ public :
 	* Works out the desired steering and writes it into the given
 	* steering output structure.
 	*/
-	KinematicSeek(Location* character,
+	KinematicSeek(TransformableLocation* character,
 				  float maxSpeed,
 				  const Location* target);
 
@@ -40,7 +40,7 @@ public:
 	* Works out the desired steering and writes it into the given
 	* steering output structure.
 	*/
-	KinematicFlee(Location* character,
+	KinematicFlee(TransformableLocation* character,
 				  float maxSpeed,
 				  const Location* target);
 
@@ -59,7 +59,7 @@ public:
 class KinematicArrive : public TargetedKinematicMovement
 {
 public:
-	KinematicArrive(Location* character,
+	KinematicArrive(TransformableLocation* character,
 					float maxSpeed,
 					const Location* target,
 					float timeToTarget,
@@ -100,7 +100,7 @@ private:
 class KinematicWander : public KinematicMovement
 {
 public:
-	KinematicWander(Location* character,
+	KinematicWander(TransformableLocation* character,
 					float maxSpeed,
 					float maxRotation);
 

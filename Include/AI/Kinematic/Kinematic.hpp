@@ -1,10 +1,10 @@
 #pragma once
 #include <SFML/Graphics.hpp>
-#include "AI/SteeringOutput.hpp"
-#include "Physic/Location.hpp"
+#include "AI/SteeringOutput.hpp" 
 #include "Physic/Vec2.hpp"
+#include "Physic/Location/TransformableLocation.hpp"
 
-class Kinematic : public Location
+class Kinematic : public TransformableLocation
 {
 public :
 	Kinematic(sf::Transformable* transformable);

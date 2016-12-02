@@ -9,7 +9,7 @@ Kinematic::Kinematic(sf::Transformable* transformable)
 Kinematic::Kinematic(sf::Transformable* transformable,
 					 Vec2 const& velocity,
 					 float rotation)
-	: Location(transformable),
+	: TransformableLocation(transformable),
 	m_velocity(velocity),
 	m_rotation(rotation)
 {
@@ -18,7 +18,7 @@ Kinematic::Kinematic(sf::Transformable* transformable,
 
 void Kinematic::Update(float time)
 {
-	Location::Integrate(time, m_velocity, m_rotation);
+	TransformableLocation::Integrate(time, m_velocity, m_rotation);
 }
 
 void Kinematic::Update(float time,
@@ -34,9 +34,9 @@ void Kinematic::GetNewOrientation(Vec2 const& velocity)
 {
 	if(m_velocity.SquareLength() > 0)
 	{
-		float angle_radiant = atan2(Location::GetPosition().x,
-									Location::GetPosition().y);
+		float angle_radiant = atan2(TransformableLocation::GetPosition().x,
+									TransformableLocation::GetPosition().y);
 
-		Location::SetOrientation(angle_radiant);
+		TransformableLocation::SetOrientation(angle_radiant);
 	}
 }

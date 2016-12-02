@@ -1,6 +1,6 @@
 #include "AI/Kinematic/TargetedKinematicMovement.hpp"
 
-TargetedKinematicMovement::TargetedKinematicMovement(Location* character,
+TargetedKinematicMovement::TargetedKinematicMovement(TransformableLocation* character,
 													 float maxSpeed,
 													 const Location* target)
 	: KinematicMovement(character, maxSpeed), 

@@ -6,15 +6,15 @@
 class KinematicMovement
 {
 public :
-	KinematicMovement(Location* character, float maxSpeed);
+	KinematicMovement(TransformableLocation* character, float maxSpeed);
 
 	virtual void GiveSteering(SteeringOutput* output) const = 0;
 
-	void SetLocationCharacter(Location* character);
+	void SetLocationCharacter(TransformableLocation* character);
 	void SetMaxSpeed(float maxSpeed);
 
-	Location* GetCharacterLocation();
-	const Location* GetCharacterLocation() const;
+	TransformableLocation* GetCharacterLocation();
+	const TransformableLocation* GetCharacterLocation() const;
 
 	Vec2 GetCharacterPosition() const;
 
@@ -22,6 +22,6 @@ public :
 
 
 private :
-	Location* m_character;
+	TransformableLocation* m_character;
 	float m_maxSpeed;
 };

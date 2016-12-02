@@ -1,13 +1,13 @@
-#include "AI/Kinematic/KinematicMovement.hpp"
+#include "AI/Kinematic/KinematicSteering.hpp"
 
-KinematicMovement::KinematicMovement(Location* character, float maxSpeed)
+KinematicMovement::KinematicMovement(TransformableLocation* character, float maxSpeed)
 	: m_character(character),
 	m_maxSpeed(maxSpeed)
 {
 	// nothing
 }
 
-void KinematicMovement::SetLocationCharacter(Location* character)
+void KinematicMovement::SetLocationCharacter(TransformableLocation* character)
 {
 	m_character = character;
 }
@@ -17,12 +17,12 @@ void KinematicMovement::SetMaxSpeed(float maxSpeed)
 	m_maxSpeed = maxSpeed;
 }
 
-Location* KinematicMovement::GetCharacterLocation()
+TransformableLocation* KinematicMovement::GetCharacterLocation()
 {
 	return m_character;
 }
 
-const Location* KinematicMovement::GetCharacterLocation() const
+const TransformableLocation* KinematicMovement::GetCharacterLocation() const
 {
 	return m_character;
 }

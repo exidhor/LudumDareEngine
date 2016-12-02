@@ -24,7 +24,7 @@ void KinematicHelper::ClipToMax_CheckMax(Vec2 * linear, float maxSpeed)
 //|||				KINEMATIC SEEK                   |||
 //||||||||||||||||||||||||||||||||||||||||||||||||||||||
 
-KinematicSeek::KinematicSeek(Location* character,
+KinematicSeek::KinematicSeek(TransformableLocation* character,
 							 float maxSpeed,
 							 const Location* target)
 	: TargetedKinematicMovement(character, maxSpeed, target)
@@ -45,7 +45,7 @@ void KinematicSeek::GiveSteering(SteeringOutput* output)
 //|||				KINEMATIC FLEE                   |||
 //||||||||||||||||||||||||||||||||||||||||||||||||||||||
 
-KinematicFlee::KinematicFlee(Location* character,
+KinematicFlee::KinematicFlee(TransformableLocation* character,
 							 float maxSpeed,
 							 const Location* target)
 	: KinematicSeek(character, maxSpeed, target)
@@ -66,7 +66,7 @@ void KinematicFlee::GiveSteering(SteeringOutput* output) const
 //|||				KINEMATIC ARRIVE                 |||
 //||||||||||||||||||||||||||||||||||||||||||||||||||||||
 
-KinematicArrive::KinematicArrive(Location* character,
+KinematicArrive::KinematicArrive(TransformableLocation* character,
 								 float maxSpeed,
 								 const Location* target,
 								 float timeToTarget,
@@ -124,7 +124,7 @@ float KinematicArrive::GetRadius() const
 //|||				KINEMATIC WANDER                 |||
 //||||||||||||||||||||||||||||||||||||||||||||||||||||||
 
-KinematicWander::KinematicWander(Location* character,
+KinematicWander::KinematicWander(TransformableLocation* character,
 								 float maxSpeed,
 								 float maxRotation)
 	: KinematicMovement(character, maxSpeed),

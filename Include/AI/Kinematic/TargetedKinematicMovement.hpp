@@ -1,11 +1,12 @@
 #pragma once
-#include "AI/Kinematic/KinematicMovement.hpp"
+#include "AI/Kinematic/KinematicSteering.hpp"
+#include "Physic/Location/Location.hpp"
 #include "Physic/Vec2.hpp"
 
 class TargetedKinematicMovement : public KinematicMovement
 {
 public :
-	TargetedKinematicMovement(Location* character, 
+	TargetedKinematicMovement(TransformableLocation* character,
 							  float maxSpeed,
 							  const Location* target);
 

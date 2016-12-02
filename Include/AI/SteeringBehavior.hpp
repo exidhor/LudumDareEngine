@@ -1,5 +1,5 @@
 #pragma once
-#include "Physic/Kinematic.hpp"
+#include "AI/Kinematic/Kinematic.hpp"
 
 class SteeringBehavior
 {

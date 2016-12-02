@@ -1,4 +1,4 @@
-#pragma
+#pragma once
 #include "AI/SteeringOutput.hpp"
 #include "AI/Kinematic/Kinematic.hpp"
 

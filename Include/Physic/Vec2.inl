@@ -21,9 +21,31 @@ Vec2::operator sf::Vector2f() const
 	return sf::Vector2f(x, y);
 }
 
-float Vec2::length() const
+void Vec2::Clear()
 {
-	return sqrt(x * x + y * y);
+	x = 0;
+	y = 0;
+}
+
+float Vec2::Length() const
+{
+	return sqrt(SquareLength());
+}
+
+float Vec2::SquareLength() const
+{
+	return x*x + y*y;
+}
+
+void Vec2::Normalise()
+{
+	float length = this->Length();
+
+	if (length != 0)
+	{
+		x = x / length;
+		y = y / length;
+	}
 }
 
 inline Vec2 operator -(const Vec2& right)

@@ -15,7 +15,13 @@ public :
 
 	operator sf::Vector2f() const;
 
-	float length() const;
+	void Clear();
+
+	float Length() const;
+
+	float SquareLength() const;
+
+	void Normalise();
 };
 
 Vec2 operator -(const Vec2& right);

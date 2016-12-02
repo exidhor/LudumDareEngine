@@ -13,8 +13,5 @@ int main(void)
     // and enter the game loop
     gameEngine.Start();
 
-
-    Engine::GetTexture("");
-
     return 0;
 }

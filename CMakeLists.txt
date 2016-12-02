@@ -140,7 +140,8 @@ ENDIF()
 # Setting project properties
 INCLUDE_DIRECTORIES(
         ${SFML_PATH}/include
-        ${CMAKE_SOURCE_DIR}/Include)
+        ${CMAKE_SOURCE_DIR}/Include
+        ${CMAKE_SOURCE_DIR}/Source)
 
 # Setting output path
 SET(CMAKE_ARCHIVE_OUTPUT_DIRECTORY "${CMAKE_SOURCE_DIR}/Lib")

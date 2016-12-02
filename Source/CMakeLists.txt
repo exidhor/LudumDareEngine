@@ -37,7 +37,10 @@ SET(PUB_INC_PATH  ${TARGET_PATH}/Engine/Include)
 SET(TEMPLATE_PATH ${CMAKE_SOURCE_DIR}/Include/Template)
 
 # Including all sources
+INCLUDE(AI/CMakeLists.txt)
 INCLUDE(Main/CMakeLists.txt)
+INCLUDE(Physic/CMakeLists.txt)
+INCLUDE(Physic/QuadTree/CMakeLists.txt)
 
 # Setting target dependencies
 # Because the published version must be
@@ -58,8 +61,14 @@ ADD_CUSTOM_COMMAND(TARGET ${TARGET_PUBLISHING} PRE_BUILD
 ADD_CUSTOM_COMMAND(TARGET ${TARGET_PUBLISHING} PRE_BUILD
         COMMAND ${CMAKE_COMMAND} -E make_directory ${TARGET_PATH}/Engine/Source
         COMMAND ${CMAKE_COMMAND} -E make_directory ${TARGET_PATH}/Engine/Include
+        COMMAND ${CMAKE_COMMAND} -E make_directory ${TARGET_PATH}/Engine/Source/AI
+        COMMAND ${CMAKE_COMMAND} -E make_directory ${TARGET_PATH}/Engine/Include/AI
         COMMAND ${CMAKE_COMMAND} -E make_directory ${TARGET_PATH}/Engine/Source/Main
         COMMAND ${CMAKE_COMMAND} -E make_directory ${TARGET_PATH}/Engine/Include/Main
+        COMMAND ${CMAKE_COMMAND} -E make_directory ${TARGET_PATH}/Engine/Source/Physic
+        COMMAND ${CMAKE_COMMAND} -E make_directory ${TARGET_PATH}/Engine/Include/Physic
+        COMMAND ${CMAKE_COMMAND} -E make_directory ${TARGET_PATH}/Engine/Source/Physic/QuadTree
+        COMMAND ${CMAKE_COMMAND} -E make_directory ${TARGET_PATH}/Engine/Include/Physic/QuadTree
         COMMENT "[INFO] Creating engine folders ..." VERBATIM)
 
 # Moving shared files

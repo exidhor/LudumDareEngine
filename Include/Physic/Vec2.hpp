@@ -1,4 +1,8 @@
 #pragma once
+
+#ifndef __VEC_2_HPP
+#define __VEC_2_HPP
+
 #include <SFML/System.hpp>
 #include <cmath>
 
@@ -39,3 +43,5 @@ bool operator ==(const Vec2& left, const Vec2& right);
 bool operator !=(const Vec2& left, const Vec2& right);
 
 #include "Physic/Vec2.inl"
+
+#endif // __VEC_2_HPP

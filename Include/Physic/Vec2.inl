@@ -4,7 +4,7 @@ inline Vec2::Vec2()
 	// nothing
 }
 
-inline Vec2::Vec2(float x, float y)
+Vec2::Vec2(float x, float y)
 	: x(x), y(y)
 {
 	// nothing
@@ -29,7 +29,7 @@ void Vec2::Clear()
 
 float Vec2::Length() const
 {
-	return sqrt(SquareLength());
+	return (float) sqrt(SquareLength());
 }
 
 float Vec2::SquareLength() const

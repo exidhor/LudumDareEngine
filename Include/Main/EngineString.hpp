@@ -19,6 +19,8 @@ public:
     // Declaration of all strings about error
     static constexpr CSTR ENGINE_FAILURE_START = "[engine] Cannot start the engine before initialization.";
     static constexpr CSTR ENGINE_FAILURE_INIT  = "[engine] Cannot initialized, engine already initialized.";
+
+    // Container key error
     static constexpr CSTR ENGINE_FAILURE_CKNF  = "[engine] Unable to find the key in the container";
     static constexpr CSTR ENGINE_FAILURE_CKAE  = "[engine] The key already exists in the container";
 };

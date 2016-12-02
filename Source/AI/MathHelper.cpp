@@ -1,6 +1,5 @@
 #include "AI/MathHelper.hpp"
 
-
 float MathHelper::RandomFloat(float max)
 {
 	return max * (float(rand()) / RAND_MAX);

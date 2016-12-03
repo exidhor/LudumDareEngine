@@ -45,6 +45,6 @@ void RenderComponent::draw(sf::RenderTarget &target, sf::RenderStates states) co
 {
 	if(m_available)
 	{
-		sf::Drawable::draw(target, states);
+		target.draw(m_sprite, states);
 	}
 }

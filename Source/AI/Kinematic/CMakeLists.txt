@@ -10,12 +10,14 @@ SET(KINEMATIC_INC_PATH ${CMAKE_SOURCE_DIR}/Include/AI/Kinematic)
 
 set(KINEMATIC_SOURCE
         ${KINEMATIC_SRC_PATH}/Kinematic.cpp
+        ${KINEMATIC_SRC_PATH}/KinematicPursue.cpp
         ${KINEMATIC_SRC_PATH}/KinematicSteering.cpp
         ${KINEMATIC_SRC_PATH}/KinematicBehaviors.cpp
         ${KINEMATIC_SRC_PATH}/TargetedKinematicMovement.cpp)
 
 set(KINEMATIC_HEADER
         ${KINEMATIC_INC_PATH}/Kinematic.hpp
+        ${KINEMATIC_INC_PATH}/KinematicPursue.hpp
         ${KINEMATIC_INC_PATH}/KinematicSteering.hpp
         ${KINEMATIC_INC_PATH}/KinematicBehaviors.hpp
         ${KINEMATIC_INC_PATH}/TargetedKinematicMovement.hpp)

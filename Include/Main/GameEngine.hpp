@@ -11,6 +11,7 @@
 class Game;
 
 #include "Main/Singleton.hpp"
+#include "Memory/Container.hpp"
 
 /// \class  GameEngine
 /// \brief  Main class of the engine
@@ -35,6 +36,13 @@ private:
     Game * m_pGame;             ///< The game user class
     bool   m_isRunning;         ///< Tells if the game is running
     bool   m_isInitialized;     ///< The status of the game engine
+
+    // Encapsulate class GameEngine
+    friend class Engine;
+
+    Container < sf::Font        > m_fontContainer;        ///< The font container
+    Container < sf::Texture     > m_textureContainer;     ///< The texture container
+    Container < sf::SoundBuffer > m_soundBufferContainer; ///< The sound container
 
     /// \brief   Fixed update (ups = update per second)
     ///          16.67 =  60 ups

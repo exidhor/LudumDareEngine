@@ -1,6 +1,5 @@
 #include "Main/Engine.hpp"
 #include "Main/GameEngine.hpp"
-#include "Component/GameObject.hpp"
 
 int main(void)
 {

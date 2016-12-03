@@ -23,6 +23,7 @@ public:
     // Container key error
     static constexpr CSTR ENGINE_FAILURE_CKNF  = "[engine] Unable to find the key in the container";
     static constexpr CSTR ENGINE_FAILURE_CKAE  = "[engine] The key already exists in the container";
+    static constexpr CSTR ENGINE_FAILURE_FNF   = "[engine] Unable to load resource, file not found";
 };
 
 #endif // __ENGINE_STRING_HPP

@@ -30,7 +30,7 @@ KinematicSeek::KinematicSeek(float maxSpeed,
 { }
 
 void KinematicSeek::GiveSteering(SteeringOutput* output,
-								 TransformableLocation* character) const
+                                 Kinematic* character) const
 {
 	output->isKinematic = true;
 
@@ -53,7 +53,7 @@ KinematicFlee::KinematicFlee(float maxSpeed,
 { }
 
 void KinematicFlee::GiveSteering(SteeringOutput* output,
-								 TransformableLocation* character) const
+                                 Kinematic* character) const
 {
 	output->isKinematic = true;
 
@@ -73,15 +73,18 @@ void KinematicFlee::GiveSteering(SteeringOutput* output,
 KinematicArrive::KinematicArrive(float maxSpeed,
 								 const Location* target,
 								 float timeToTarget,
-								 float radius)
+								 float targetRadius,
+								 float slowRadius)
 	: TargetedKinematicMovement(maxSpeed,
 								target),
 	m_timeToTarget(timeToTarget),
-	m_radius(radius)
+	m_targetRadius(targetRadius),
+	m_slowRadius(slowRadius)
+
 { }
 
 void KinematicArrive::GiveSteering(SteeringOutput* output,
-								   TransformableLocation* character) const
+                                   Kinematic* character) const
 {
 	output->isKinematic = true;
 
@@ -89,15 +92,28 @@ void KinematicArrive::GiveSteering(SteeringOutput* output,
 	output->linear = TargetedKinematicMovement::getTargetPosition();
 	output->linear -= character->GetPosition();
 
+	float squareDistance = output->linear.SquareLength();
+
 	// If there is no direction, do nothing
-	if (output->linear.SquareLength() < m_radius * m_radius)
+	if (squareDistance < m_targetRadius * m_targetRadius)
 	{
 		output->linear.Clear();
 	}
 	else
 	{
-		// We'd like to arrive in timeToTarget seconds
-		output->linear *= (1.0f / m_timeToTarget);
+		output->linear.Normalise();
+		output->linear *= KinematicSteering::GetMaxSpeed();
+
+		// if we are outside the slowRadius, then go maxSpeed (and no changement)
+		// Otherwise calculate a scaled speed
+		if(squareDistance < m_slowRadius * m_slowRadius)
+		{
+			output->linear *= sqrt(squareDistance) / m_slowRadius;
+		}
+
+		// Acceleration tries to get to the target velocity
+		output->linear -= character->GetVelocity();
+		output->linear /= m_timeToTarget;
 
 		// If that is too fast, then clip the speed
 		KinematicHelper::ClipToMax_CheckMax(&output->linear,
@@ -110,9 +126,14 @@ void KinematicArrive::SetTimeToTarget(float timeToTarget)
 	m_timeToTarget = timeToTarget;
 }
 
-void KinematicArrive::SetRadius(float radius)
+void KinematicArrive::SetTargetRadius(float targetRadius)
 {
-	m_radius = radius;
+	m_targetRadius = targetRadius;
+}
+
+void KinematicArrive::SetSlowRadius(float slowRadius)
+{
+	m_slowRadius = slowRadius;
 }
 
 float KinematicArrive::GetTimeToTarget() const
@@ -120,9 +141,14 @@ float KinematicArrive::GetTimeToTarget() const
 	return m_timeToTarget;
 }
 
-float KinematicArrive::GetRadius() const
+float KinematicArrive::GetTargetRadius() const
 {
-	return m_radius;
+	return m_targetRadius;
+}
+
+float KinematicArrive::GetSlowRadius() const
+{
+	return m_slowRadius;
 }
 
 //||||||||||||||||||||||||||||||||||||||||||||||||||||||
@@ -138,7 +164,7 @@ KinematicWander::KinematicWander(float maxSpeed,
 { }
 
 void KinematicWander::GiveSteering(SteeringOutput* output,
-								   TransformableLocation* character) const
+                                   Kinematic* character) const
 {
 	output->isKinematic = true;
 

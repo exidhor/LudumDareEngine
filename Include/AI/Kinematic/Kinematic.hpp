@@ -20,6 +20,8 @@ public :
 
 	void GetNewOrientation(Vec2 const& velocity);
 
+	Vec2 const& GetVelocity() const;
+
 private :
 	Vec2 m_velocity;
 	float m_rotation;

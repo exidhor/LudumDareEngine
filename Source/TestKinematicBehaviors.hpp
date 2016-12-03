@@ -12,8 +12,9 @@
 #define MAX_FLEE_SPEED 5
 
 #define MAX_ARRIVE_SPEED 100
-#define ARRIVE_RADIUS 5.0f
-#define TIME_TO_TARGET 5.0f
+#define ARRIVE_TARGET_RADIUS 5.0f
+#define ARRIVE_SLOW_RADIUS 50
+#define TIME_TO_TARGET 0.1f
 
 #define MAX_WANDER_SPEED 10
 #define MAX_WANDER_ROTATION 50
@@ -208,7 +209,7 @@ void testKinematicBehaviors()
 	{
 		seeks.push_back(KinematicSeek(MAX_SEEK_SPEED, nullptr));
 		flees.push_back(KinematicFlee(MAX_FLEE_SPEED, nullptr));
-		arrives.push_back(KinematicArrive(MAX_ARRIVE_SPEED, nullptr, TIME_TO_TARGET, ARRIVE_RADIUS));
+		arrives.push_back(KinematicArrive(MAX_ARRIVE_SPEED, nullptr, TIME_TO_TARGET, ARRIVE_TARGET_RADIUS, ARRIVE_SLOW_RADIUS));
 		wanders.push_back(KinematicWander(MAX_WANDER_SPEED, MAX_WANDER_ROTATION));
 	}
 	

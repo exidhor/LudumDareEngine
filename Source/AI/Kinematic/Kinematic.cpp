@@ -47,3 +47,8 @@ void Kinematic::GetNewOrientation(Vec2 const& velocity)
 		TransformableLocation::SetOrientation(angle_radiant);
 	}
 }
+
+Vec2 const& Kinematic::GetVelocity() const
+{
+	return m_velocity;
+}

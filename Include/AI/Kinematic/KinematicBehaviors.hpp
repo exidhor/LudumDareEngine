@@ -26,7 +26,7 @@ public :
 				  const Location* target);
 
 	virtual void GiveSteering(SteeringOutput* output,
-							  TransformableLocation* character) const;
+	                          Kinematic* character) const;
 };
 
 
@@ -48,7 +48,7 @@ public:
 	* steering output structure.
 	*/
 	virtual void GiveSteering(SteeringOutput* output,
-							  TransformableLocation* character) const;
+	                          Kinematic* character) const;
 };
 
 
@@ -62,20 +62,23 @@ public:
 	KinematicArrive(float maxSpeed,
 					const Location* target,
 					float timeToTarget,
-					float radius);
+					float targetRadius,
+					float slowRadius);
 
 	/**
 	* Works out the desired steering and writes it into the given
 	* steering output structure.
 	*/
 	virtual void GiveSteering(SteeringOutput* output,
-							  TransformableLocation* character) const;
+	                          Kinematic* character) const;
 
 	void SetTimeToTarget(float timeToTarget);
-	void SetRadius(float radius);
+	void SetTargetRadius(float targetRadius);
+	void SetSlowRadius(float slowRadius);
 
 	float GetTimeToTarget() const;
-	float GetRadius() const;
+	float GetTargetRadius() const;
+	float GetSlowRadius() const;
 
 private:
 	/**
@@ -88,7 +91,9 @@ private:
 	* If the character is closer than this to the target, it will
 	* not attempt to move.
 	*/
-	float m_radius;
+	float m_targetRadius;
+
+	float m_slowRadius;
 };
 
 /**
@@ -107,7 +112,7 @@ public:
 	* steering output structure.
 	*/
 	virtual void GiveSteering(SteeringOutput* output,
-							  TransformableLocation* character) const;
+	                          Kinematic* character) const;
 
 	void SetMaxRotation(float maxRotation);
 	float GetMaxRotation() const;

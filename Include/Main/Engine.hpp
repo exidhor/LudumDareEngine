@@ -12,6 +12,7 @@ class GameEngine;
 
 #include <SFML/Audio.hpp>
 #include <SFML/Graphics.hpp>
+#include <Component/GameObject.hpp>
 
 /// \class  Engine
 /// \brief  Contains all static method to interact with the game engine
@@ -67,7 +68,17 @@ public:
     /// \param  key A const reference on the key of the texture
     static void UnloadTexture(const std::string& key);
 
+    /// \brief  Allocate a resource of type T from game engine allocators
+    /// \return A pointer on the resource, else nullptr
+    template <typename T> static T * Allocate();
+
+    /// \brief  Deallocate a resource of type T, if the pointer isn't valid,
+    ///         nothing will happen
+    /// \param A pointer on the resource to deallocate
+    template <typename T> static void Deallocate(T * object);
+
 private:
+
     // Encapsulating Engine
     friend class GameEngine;
 
@@ -78,5 +89,7 @@ private:
     // Pointer on the game engine
     static GameEngine * pGameEngineInstance;
 };
+
+#include "Main/Engine.inl"
 
 #endif // __ENGINE_HPP

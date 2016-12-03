@@ -12,6 +12,11 @@ class Game;
 
 #include "Main/Singleton.hpp"
 #include "Memory/Container.hpp"
+#include "Memory/PoolAllocator.hpp"
+#include "Component/GameObject.hpp"
+#include "Component/AIComponent.hpp"
+#include "Component/RenderComponent.hpp"
+#include "Component/PhysicsComponent.hpp"
 
 /// \class  GameEngine
 /// \brief  Main class of the engine
@@ -43,6 +48,12 @@ private:
     Container < sf::Font        > m_fontContainer;        ///< The font container
     Container < sf::Texture     > m_textureContainer;     ///< The texture container
     Container < sf::SoundBuffer > m_soundBufferContainer; ///< The sound container
+
+    PoolAllocator < sf::Sprite       > m_spriteAllocator;          ///< The sprite allocator
+    PoolAllocator < GameObject       > m_gameObjectAllocator;      ///< The game object Allocator
+    PoolAllocator < AIComponent      > m_aiComponentAllocator;     ///< The AI component allocator
+    PoolAllocator < RenderComponent  > m_renderComponentAllocator; ///< The render component allocator
+    PoolAllocator < PhysicsComponent > m_physicComponentAllocator; ///< The physic component allocator
 
     /// \brief   Fixed update (ups = update per second)
     ///          16.67 =  60 ups

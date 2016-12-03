@@ -26,7 +26,7 @@ public :
 
     /// \brief  Set the status of the resource
     /// \param  available The status of the resource
-    bool SetAvailable(bool available);
+    void SetAvailable(bool available);
 
 private:
 

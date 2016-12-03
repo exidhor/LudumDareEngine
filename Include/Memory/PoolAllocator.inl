@@ -36,7 +36,7 @@ T * PoolAllocator<T>::Allocate()
     m_resources.push_back(Resource<T>());
     m_resources.back().SetAvailable(false);
 
-    return m_resources.back().GetResources();
+    return m_resources.back().GetResource();
 }
 
 template <typename T>

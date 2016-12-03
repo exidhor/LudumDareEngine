@@ -21,7 +21,7 @@ inline bool Resource<T>::IsAvailable()
 }
 
 template <typename T>
-inline bool Resource<T>::SetAvailable(bool available)
+inline void Resource<T>::SetAvailable(bool available)
 {
     m_available = available;
 }

@@ -15,6 +15,7 @@ SET(MAIN_SOURCE
 
 SET(MAIN_HEADER
         ${MAIN_INC_PATH}/World.hpp
+        ${MAIN_INC_PATH}/Engine.inl
         ${MAIN_INC_PATH}/Engine.hpp
         ${MAIN_INC_PATH}/Singleton.hpp
         ${MAIN_INC_PATH}/GameEngine.hpp

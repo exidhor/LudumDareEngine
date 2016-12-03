@@ -22,11 +22,11 @@ public :
 	* Works out the desired steering and writes it into the given
 	* steering output structure.
 	*/
-	KinematicSeek(TransformableLocation* character,
-				  float maxSpeed,
+	KinematicSeek(float maxSpeed,
 				  const Location* target);
 
-	virtual void GiveSteering(SteeringOutput* output);
+	virtual void GiveSteering(SteeringOutput* output,
+							  TransformableLocation* character);
 };
 
 
@@ -40,15 +40,15 @@ public:
 	* Works out the desired steering and writes it into the given
 	* steering output structure.
 	*/
-	KinematicFlee(TransformableLocation* character,
-				  float maxSpeed,
+	KinematicFlee(float maxSpeed,
 				  const Location* target);
 
 	/**
 	* Works out the desired steering and writes it into the given
 	* steering output structure.
 	*/
-	virtual void GiveSteering(SteeringOutput* output) const;
+	virtual void GiveSteering(SteeringOutput* output,
+							  TransformableLocation* character) const;
 };
 
 
@@ -59,8 +59,7 @@ public:
 class KinematicArrive : public TargetedKinematicMovement
 {
 public:
-	KinematicArrive(TransformableLocation* character,
-					float maxSpeed,
+	KinematicArrive(float maxSpeed,
 					const Location* target,
 					float timeToTarget,
 					float radius);
@@ -69,7 +68,8 @@ public:
 	* Works out the desired steering and writes it into the given
 	* steering output structure.
 	*/
-	virtual void GiveSteering(SteeringOutput* output) const;
+	virtual void GiveSteering(SteeringOutput* output,
+							  TransformableLocation* character) const;
 
 	void SetTimeToTarget(float timeToTarget);
 	void SetRadius(float radius);
@@ -97,18 +97,18 @@ private:
 * Wander changes the orientation by a random amount then moves
 * the character forwards.
 */
-class KinematicWander : public KinematicMovement
+class KinematicWander : public KinematicSteering
 {
 public:
-	KinematicWander(TransformableLocation* character,
-					float maxSpeed,
+	KinematicWander(float maxSpeed,
 					float maxRotation);
 
 	/**
 	* Works out the desired steering and writes it into the given
 	* steering output structure.
 	*/
-	virtual void GiveSteering(SteeringOutput* output) const;
+	virtual void GiveSteering(SteeringOutput* output,
+							  TransformableLocation* character) const;
 
 	void SetMaxRotation(float maxRotation);
 	float GetMaxRotation() const;

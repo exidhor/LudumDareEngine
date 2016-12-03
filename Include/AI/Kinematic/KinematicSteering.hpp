@@ -3,25 +3,18 @@
 #include "AI/Kinematic/Kinematic.hpp"
 #include "Physic/Vec2.hpp"
 
-class KinematicMovement
+class KinematicSteering
 {
 public :
-	KinematicMovement(TransformableLocation* character, float maxSpeed);
 
-	virtual void GiveSteering(SteeringOutput* output) const = 0;
+	KinematicSteering(float maxSpeed);
 
-	void SetLocationCharacter(TransformableLocation* character);
+	virtual void GiveSteering(SteeringOutput* output, 
+							  TransformableLocation * character) const = 0;
+
 	void SetMaxSpeed(float maxSpeed);
-
-	TransformableLocation* GetCharacterLocation();
-	const TransformableLocation* GetCharacterLocation() const;
-
-	Vec2 GetCharacterPosition() const;
-
 	float GetMaxSpeed() const;
 
-
 private :
-	TransformableLocation* m_character;
 	float m_maxSpeed;
 };

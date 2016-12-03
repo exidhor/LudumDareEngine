@@ -7,23 +7,21 @@ AIComponent::AIComponent(sf::Transformable* transformable)
 	// nothing
 }
 
-void AIComponent::Update(float time)
-{
-	if(m_steering != nullptr)
-	{
-		m_steering->GiveSteering(&m_cache);
-
-		m_kinematic.Update(time, m_cache);
-	}
-	else
-	{
-		m_kinematic.Update(time);
-	}
-}
-
-void AIComponent::SetKinematicSteering(KinematicMovement* steering)
+void AIComponent::SetKinematicSteering(KinematicSteering* steering)
 {
 	m_steering = steering;
+}
+
+void AIComponent::Update(float time)
+{
+	SteeringOutput output;
+
+	if(m_steering)
+	{
+		m_steering->GiveSteering(&output, &m_kinematic);
+	}
+
+	m_kinematic.Update(time, output);
 }
 
 Location* AIComponent::GetLocation()

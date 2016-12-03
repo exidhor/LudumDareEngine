@@ -24,61 +24,60 @@ void KinematicHelper::ClipToMax_CheckMax(Vec2 * linear, float maxSpeed)
 //|||				KINEMATIC SEEK                   |||
 //||||||||||||||||||||||||||||||||||||||||||||||||||||||
 
-KinematicSeek::KinematicSeek(TransformableLocation* character,
-							 float maxSpeed,
+KinematicSeek::KinematicSeek(float maxSpeed,
 							 const Location* target)
-	: TargetedKinematicMovement(character, maxSpeed, target)
+	: TargetedKinematicMovement(maxSpeed, target)
 { }
 
-void KinematicSeek::GiveSteering(SteeringOutput* output)
+void KinematicSeek::GiveSteering(SteeringOutput* output,
+								 TransformableLocation* character)
 {
 	// First work out the direction
 	output->linear = TargetedKinematicMovement::getTargetPosition();
-	output->linear -= KinematicMovement::GetCharacterPosition();
+	output->linear -= character->GetPosition();
 
 	// If there is no direction, do nothing
 	KinematicHelper::ClipToMax_CheckZero(&output->linear,
-										 KinematicMovement::GetMaxSpeed());
+										 KinematicSteering::GetMaxSpeed());
 }
 
 //||||||||||||||||||||||||||||||||||||||||||||||||||||||
 //|||				KINEMATIC FLEE                   |||
 //||||||||||||||||||||||||||||||||||||||||||||||||||||||
 
-KinematicFlee::KinematicFlee(TransformableLocation* character,
-							 float maxSpeed,
+KinematicFlee::KinematicFlee(float maxSpeed,
 							 const Location* target)
-	: KinematicSeek(character, maxSpeed, target)
+	: KinematicSeek(maxSpeed, target)
 { }
 
-void KinematicFlee::GiveSteering(SteeringOutput* output) const
+void KinematicFlee::GiveSteering(SteeringOutput* output,
+								 TransformableLocation* character) const
 {
 	// First work out the direction
-	output->linear = KinematicMovement::GetCharacterPosition();
+	output->linear = character->GetPosition();
 	output->linear -= TargetedKinematicMovement::getTargetPosition();
 
 	// If there is no direction, do nothing
 	KinematicHelper::ClipToMax_CheckZero(&output->linear,
-										 KinematicMovement::GetMaxSpeed());
+										 KinematicSteering::GetMaxSpeed());
 }
 
 //||||||||||||||||||||||||||||||||||||||||||||||||||||||
 //|||				KINEMATIC ARRIVE                 |||
 //||||||||||||||||||||||||||||||||||||||||||||||||||||||
 
-KinematicArrive::KinematicArrive(TransformableLocation* character,
-								 float maxSpeed,
+KinematicArrive::KinematicArrive(float maxSpeed,
 								 const Location* target,
 								 float timeToTarget,
 								 float radius)
-	: TargetedKinematicMovement(character,
-								maxSpeed,
+	: TargetedKinematicMovement(maxSpeed,
 								target),
 	m_timeToTarget(timeToTarget),
 	m_radius(radius)
 { }
 
-void KinematicArrive::GiveSteering(SteeringOutput* output) const
+void KinematicArrive::GiveSteering(SteeringOutput* output,
+								   TransformableLocation* character) const
 {
 	// First work out the direction
 	output->linear = TargetedKinematicMovement::getTargetPosition();
@@ -96,7 +95,7 @@ void KinematicArrive::GiveSteering(SteeringOutput* output) const
 
 		// If that is too fast, then clip the speed
 		KinematicHelper::ClipToMax_CheckMax(&output->linear,
-											KinematicMovement::GetMaxSpeed());
+											KinematicSteering::GetMaxSpeed());
 	}
 }
 
@@ -124,18 +123,18 @@ float KinematicArrive::GetRadius() const
 //|||				KINEMATIC WANDER                 |||
 //||||||||||||||||||||||||||||||||||||||||||||||||||||||
 
-KinematicWander::KinematicWander(TransformableLocation* character,
-								 float maxSpeed,
+KinematicWander::KinematicWander(float maxSpeed,
 								 float maxRotation)
-	: KinematicMovement(character, maxSpeed),
+	: KinematicSteering(maxSpeed),
 	m_maxRotation(maxRotation)
 { }
 
-void KinematicWander::GiveSteering(SteeringOutput* output) const
+void KinematicWander::GiveSteering(SteeringOutput* output,
+								   TransformableLocation* character) const
 {
 	// Move forward in the current direction
-	output->linear = KinematicMovement::GetCharacterLocation()->GetOrientationAsVector();
-	output->linear *= KinematicMovement::GetMaxSpeed();
+	output->linear = character->GetOrientationAsVector();
+	output->linear *= KinematicSteering::GetMaxSpeed();
 
 	// Turn a little
 	float change = MathHelper::RandomBinomial(MAX_OFFSET_CHANGE);

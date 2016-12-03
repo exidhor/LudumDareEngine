@@ -1,9 +1,8 @@
 #include "AI/Kinematic/TargetedKinematicMovement.hpp"
 
-TargetedKinematicMovement::TargetedKinematicMovement(TransformableLocation* character,
-													 float maxSpeed,
+TargetedKinematicMovement::TargetedKinematicMovement(float maxSpeed,
 													 const Location* target)
-	: KinematicMovement(character, maxSpeed), 
+	: KinematicSteering(maxSpeed), 
 	m_target(target)
 {
 	// nothing

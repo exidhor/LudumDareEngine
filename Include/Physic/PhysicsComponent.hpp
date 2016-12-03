@@ -6,7 +6,8 @@ class PhysicsComponent
 public :
 	PhysicsComponent(sf::Transformable* transformable);
 
-private :
 	sf::FloatRect getCollider() const;
+
+private :
 	sf::Transformable* m_transformable;
 };

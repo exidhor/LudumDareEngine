@@ -26,6 +26,10 @@ public :
 	float SquareLength() const;
 
 	void Normalise();
+
+	float Distance(Vec2 const& other) const;
+
+	float SquareDistance(Vec2 const& other) const;
 };
 
 Vec2 operator -(const Vec2& right);

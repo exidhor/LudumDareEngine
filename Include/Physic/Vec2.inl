@@ -48,6 +48,16 @@ inline void Vec2::Normalise()
 	}
 }
 
+inline float Vec2::Distance(Vec2 const& other) const
+{
+	return sqrt(SquareDistance(other));
+}
+
+inline float Vec2::SquareDistance(Vec2 const& other) const
+{
+	return (x - other.x) * (x - other.x) + (y - other.y) * (y - other.y);
+}
+
 inline Vec2 operator -(const Vec2& right)
 {
 	return Vec2(-right.x, -right.y);

@@ -27,3 +27,4 @@ sf::Vector2f getRandomSize(sf::Vector2u const&  min,
 
 	return sf::Vector2f(width, height);
 }
+

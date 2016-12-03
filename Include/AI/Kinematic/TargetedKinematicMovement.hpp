@@ -3,11 +3,10 @@
 #include "Physic/Location/Location.hpp"
 #include "Physic/Vec2.hpp"
 
-class TargetedKinematicMovement : public KinematicMovement
+class TargetedKinematicMovement : public KinematicSteering
 {
 public :
-	TargetedKinematicMovement(TransformableLocation* character,
-							  float maxSpeed,
+	TargetedKinematicMovement(float maxSpeed,
 							  const Location* target);
 
 	Vec2 getTargetPosition() const;

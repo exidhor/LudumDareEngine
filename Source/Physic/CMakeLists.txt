@@ -23,6 +23,5 @@ target_sources(${TARGET_COMPILE}
 
 # Copying files
 add_custom_command(TARGET ${TARGET_PUBLISHING} POST_BUILD
-        COMMAND ${CMAKE_COMMAND} -E copy ${PHYSIC_SOURCE} ${PUB_SRC_PATH}/Physic/
         COMMAND ${CMAKE_COMMAND} -E copy ${PHYSIC_HEADER} ${PUB_INC_PATH}/Physic/
         COMMENT "[INFO] Copying Phsyic files ...")

@@ -51,13 +51,13 @@ inline AIComponent * GameObject::__GetComponent<AIComponent>(void)
 }
 
 template <>
-void GameObject::__AddComponent<PhysicsComponent>(void)
+inline void GameObject::__AddComponent<PhysicsComponent>(void)
 {
     std::cout << "Add physic component" << std::endl;
 }
 
 template <>
-void GameObject::__AddComponent<AIComponent>(void)
+inline void GameObject::__AddComponent<AIComponent>(void)
 {
     std::cout << "Add ai component" << std::endl;
 }

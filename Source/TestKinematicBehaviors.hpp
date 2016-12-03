@@ -217,7 +217,23 @@ void manageInput(sf::RenderWindow & window,
 	}*/
 
 	if(currentBehavior != NONE)
-	{ }
+	{
+		targetIsSet = true;
+
+		target.x = sf::Mouse::getPosition(window).x;
+		target.y = sf::Mouse::getPosition(window).y;
+		
+		for (unsigned i = 0; i < rects.size(); i++)
+		{
+			if (rects[i].getGlobalBounds().contains(target))
+			{
+				indexToTarget = i;
+				targetIsPoint = false;
+				std::cout << "BOX TARGETED" << std::endl;
+				break;
+			}
+		}
+	}
 
 	configureSteering(selectedShapeIndex, 
 					  currentBehavior, 

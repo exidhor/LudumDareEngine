@@ -20,8 +20,8 @@ public:
 	void SetOrientation(float angleInRadiant);
 	void Rotate(float angleInRadiant);
 
-	virtual Vec2 GetPosition() const;
-	virtual float GetOrientation() const;
+	Vec2 GetPosition() const override;
+	float GetOrientation() const override;
 
 private:
 	sf::Transformable * m_transformable;

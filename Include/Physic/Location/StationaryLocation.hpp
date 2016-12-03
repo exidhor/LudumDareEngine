@@ -11,8 +11,8 @@ public :
 	void SetPosition(Vec2 const& newPosition);
 	void SetOrientation(float newOrientation);
 
-	virtual Vec2 GetPosition() const;
-	virtual float GetOrientation() const;
+	Vec2 GetPosition() const override;
+	float GetOrientation() const override;
 
 private :
 	Vec2 m_position;

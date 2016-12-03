@@ -9,7 +9,7 @@ KinematicPursue::KinematicPursue(float maxSpeed,
 	m_pursueTarget(target),
 	m_maxPredictionTime(maxPredictionTime)
 {
-	TargetedKinematicMovement::SetTargetPosition(&m_seekLocation);
+	//TargetedKinematicMovement::SetTargetPosition(&m_seekLocation);
 }
 
 void KinematicPursue::GiveSteering(SteeringOutput* output,
@@ -41,6 +41,7 @@ void KinematicPursue::GiveSteering(SteeringOutput* output,
 	seekPosition += m_pursueTarget->GetVelocity() * prediction;
 	m_seekLocation.SetPosition(seekPosition);
 
+	TargetedKinematicMovement::SetTargetPosition(&m_seekLocation);
 	KinematicSeek::GiveSteering(output, character);
 }
 

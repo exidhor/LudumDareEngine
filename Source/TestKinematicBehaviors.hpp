@@ -8,7 +8,7 @@
 #include "Physic/Location/StationaryLocation.hpp"
 #include "AI/Kinematic/KinematicPursue.hpp"
 
-#define MAX_SEEK_SPEED 100
+#define MAX_SEEK_SPEED 300
 
 #define MAX_FLEE_SPEED 5
 
@@ -20,8 +20,8 @@
 #define MAX_WANDER_SPEED 10
 #define MAX_WANDER_ROTATION 50
 
-#define PURSUE_MAX_SPEED 100
-#define MAX_PREDICTION_TIME 1.0f
+#define PURSUE_MAX_SPEED 50
+#define MAX_PREDICTION_TIME 2.0f
 
 #define NUMBER_RECTS 10
 
@@ -197,8 +197,27 @@ void manageInput(sf::RenderWindow & window,
 	Vec2 target;
 	int indexToTarget = -1;
 
-	if (sf::Mouse::isButtonPressed(sf::Mouse::Right))
+	/*if (sf::Mouse::isButtonPressed(sf::Mouse::Right))
 	{   
+		targetIsSet = true;
+
+		target.x = sf::Mouse::getPosition(window).x;
+		target.y = sf::Mouse::getPosition(window).y;
+
+		for (unsigned i = 0; i < rects.size(); i++)
+		{
+			if (rects[i].getGlobalBounds().contains(target))
+			{
+				indexToTarget = i;
+				targetIsPoint = false;
+				std::cout << "BOX TARGETED" << std::endl;
+				break;
+			}
+		}
+	}*/
+
+	if(currentBehavior != NONE)
+	{
 		targetIsSet = true;
 
 		target.x = sf::Mouse::getPosition(window).x;

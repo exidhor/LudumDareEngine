@@ -18,6 +18,8 @@ class Game;
 #include "Component/RenderComponent.hpp"
 #include "Component/PhysicsComponent.hpp"
 
+#define ENGINE_DEFAULT_POOL_SIZE 200
+
 /// \class  GameEngine
 /// \brief  Main class of the engine
 class GameEngine
@@ -89,6 +91,9 @@ private:
 
     /// \Brief  Called after the engine release
     void OnPostExit(void);
+
+    /// \brief  Initialize all pool allocators
+    void InitializeMemory(void);
 };
 
 #endif // __GAME_ENGINE_HPP

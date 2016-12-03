@@ -25,15 +25,15 @@ namespace KinematicHelper
 
 
 /**
-* Kinematic seek moves at full speed towards its target at each
-* frame.
+* \class KinematicSeek
+* \brief Kinematic seek moves at full speed towards its target at each
+*		 frame.
 */
 class KinematicSeek : public TargetedKinematicMovement
 {
 public :
 	/**
-	* \brief	Works out the desired steering and writes it into the given
-	*			steering output structure.
+	* \brief	Construct the behavior Seek
 	* \param	maxSpeed : the maximum speed to go toward the seek target
 	* \param	target : The position of the target (it's a Location because
 	*			the target can move)
@@ -42,9 +42,9 @@ public :
 				  const Location* target);
 
 	/**
-	 * \brief	// todo 
-	 * \param output : 
-	 * \param character : 
+	 * \brief	Set the value of the Steering output to represent the behavior.
+	 * \param	output : the output to set 
+	 * \param	character : the character which earn the behavior
 	 */
 	virtual void GiveSteering(SteeringOutput* output,
 	                          Kinematic* character);
@@ -52,21 +52,26 @@ public :
 
 
 /**
-* Flee seeks to maximise the distance from the target.
+* \class Flee
+* \brief Flee seeks to maximise the distance from the target.
 */
 class KinematicFlee : public KinematicSeek
 {
 public:
+
 	/**
-	* Works out the desired steering and writes it into the given
-	* steering output structure.
+	* \brief	Construct the behavior Flee
+	* \param	maxSpeed : the maximum speed to go to the opposite side of the target
+	* \param	target : The position of the target (it's a Location because
+	*			the target can move)
 	*/
 	KinematicFlee(float maxSpeed,
 				  const Location* target);
 
 	/**
-	* Works out the desired steering and writes it into the given
-	* steering output structure.
+	* \brief	Set the value of the Steering output to represent the behavior.
+	* \param	output : the output to set
+	* \param	character : the character which earn the behavior
 	*/
 	virtual void GiveSteering(SteeringOutput* output,
 	                          Kinematic* character);
@@ -74,12 +79,23 @@ public:
 
 
 /**
-* Kinematic arrive behaves just like seek unless it is close to
-* the target, in which case it moves slower and eventually stops.
+* \class KinematicArrive
+* \brief Kinematic arrive behaves just like seek unless it is close to
+*		 the target, in which case it moves slower and eventually stops.
 */
 class KinematicArrive : public TargetedKinematicMovement
 {
 public:
+
+	/**
+	* \brief	Construct the behavior KinematicArrive
+	* \param	maxSpeed : the maximum speed to go to the target when possible
+	* \param	target : The position of the target (it's a Location because
+	*			the target can move)
+	* \param	timeToTarget : The minimum time the object have to rejoin the target
+	* \param	targetRadius : The radius in which the object consider it arrive
+	* \param	slowRadius : The radius from which the object start to slow down to arrive
+	*/
 	KinematicArrive(float maxSpeed,
 					const Location* target,
 					float timeToTarget,
@@ -87,18 +103,46 @@ public:
 					float slowRadius);
 
 	/**
-	* Works out the desired steering and writes it into the given
-	* steering output structure.
+	* \brief	Set the value of the Steering output to represent the behavior.
+	* \param	output : the output to set
+	* \param	character : the character which earn the behavior
 	*/
 	virtual void GiveSteering(SteeringOutput* output,
 	                          Kinematic* character);
 
+	/**
+	 * \brief Set the minimum time the object have to rejoin the target.
+	 * \param timeToTarget : the minimum time the object have to rejoin the target.
+	 */
 	void SetTimeToTarget(float timeToTarget);
+	/**
+	 * \brief Set the radius in which the object consider it arrive
+	 * \param targetRadius : The radius in which the object consider it arrive
+	 */
 	void SetTargetRadius(float targetRadius);
+
+	/**
+	 * \brief Set the radius from which the object start to slow down to arrive
+	 * \param slowRadius : The radius from which the object start to slow down to arrive
+	 */
 	void SetSlowRadius(float slowRadius);
 
+	/**
+	 * \brief Return the minimum time the object have to rejoin the target.
+	 * \return the minimum time the object have to rejoin the target.
+	 */
 	float GetTimeToTarget() const;
+	
+	/**
+	* \brief Return the radius in which the object consider it arrive
+	* \return The radius in which the object consider it arrive
+	*/
 	float GetTargetRadius() const;
+	
+	/**
+	* \brief Return the radius from which the object start to slow down to arrive
+	* \return The radius from which the object start to slow down to arrive
+	*/
 	float GetSlowRadius() const;
 
 private:
@@ -118,24 +162,43 @@ private:
 };
 
 /**
-* Wander changes the orientation by a random amount then moves
-* the character forwards.
+* \class KinematicWander
+* \brief Wander changes the orientation by a random amount then moves
+*		 the character forwards.
 */
 class KinematicWander : public KinematicSteering
 {
 public:
+
+	/**
+	 * \brief Construct the behavior KinematicWander
+	 * \param maxSpeed : The maximum speed to use when wandering
+	 * \param maxRotation : The maximum rotation to move
+	 * \param maxOffsetChange : The maximum offset during orientation changement
+	 */
 	KinematicWander(float maxSpeed,
 					float maxRotation,
 					float maxOffsetChange = 0.2f);
 
 	/**
-	* Works out the desired steering and writes it into the given
-	* steering output structure.
+	* \brief	Set the value of the Steering output to represent the behavior.
+	* \param	output : the output to set
+	* \param	character : the character which earn the behavior
 	*/
 	virtual void GiveSteering(SteeringOutput* output,
 	                          Kinematic* character);
 
+
+	/**
+	 * \brief Set the maximum rotation to move
+	 * \param maxRotation : The maximum rotation to move
+	 */
 	void SetMaxRotation(float maxRotation);
+
+	/**
+	* \brief Return the maximum rotation to move
+	* \return The maximum rotation to move
+	*/
 	float GetMaxRotation() const;
 
 private:

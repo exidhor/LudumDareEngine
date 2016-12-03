@@ -21,11 +21,7 @@ void Game::OnPreInitialize(void)
 /// \brief  Called after engine initialization
 void Game::OnPostInitialize(void)
 {
-    sf::Sprite * sprite = Engine::Allocate<sf::Sprite>();
-    std::cout << sprite << std::endl;
-    Engine::Deallocate<sf::Sprite>(sprite);
-    sprite = Engine::Allocate<sf::Sprite>();
-    std::cout << sprite << std::endl;
+    // Code
 }
 
 /// \brief  Called before engine update

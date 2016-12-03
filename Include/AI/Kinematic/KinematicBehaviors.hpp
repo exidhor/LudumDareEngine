@@ -26,7 +26,7 @@ public :
 				  const Location* target);
 
 	virtual void GiveSteering(SteeringOutput* output,
-							  TransformableLocation* character);
+							  TransformableLocation* character) const;
 };
 
 

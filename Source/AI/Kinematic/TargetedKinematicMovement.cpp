@@ -12,3 +12,8 @@ Vec2 TargetedKinematicMovement::getTargetPosition() const
 {
 	return m_target->GetPosition();
 }
+
+void TargetedKinematicMovement::setTargetPosition(const Location * target)
+{
+	m_target = target;
+}

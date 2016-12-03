@@ -30,7 +30,7 @@ KinematicSeek::KinematicSeek(float maxSpeed,
 { }
 
 void KinematicSeek::GiveSteering(SteeringOutput* output,
-								 TransformableLocation* character)
+								 TransformableLocation* character) const
 {
 	// First work out the direction
 	output->linear = TargetedKinematicMovement::getTargetPosition();

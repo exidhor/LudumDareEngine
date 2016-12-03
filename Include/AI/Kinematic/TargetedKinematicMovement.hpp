@@ -11,6 +11,8 @@ public :
 
 	Vec2 getTargetPosition() const;
 
+	void setTargetPosition(const Location * target);
+
 private:
 	const Location* m_target;
 };

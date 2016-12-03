@@ -1,63 +1,65 @@
-#include "Component/GameObject.hpp"
-
-inline /* explicit */ GameObject::GameObject(void)
-{
-    // None
-}
-
-inline /* virtual */ GameObject::~GameObject(void)
-{
-    // None
-}
-
 template <typename T>
 inline T * GameObject::GetComponent(void)
 {
-    // Call template specialization
-    return __GetComponent<T>();
+	// Call template specialization
+	return GetComponent<T>();
 }
 
 template <typename T>
 inline void GameObject::AddComponent(void)
 {
-    // Call template specialization
-    __AddComponent<T>();
+	// Call template specialization
+	AddComponent<T>();
 }
 
 template <typename T>
-inline T * GameObject::__GetComponent(void)
+inline void GameObject::RemoveComponent()
 {
-    std::cout << "Not a component" << std::endl;
-    return nullptr;
-}
-
-template <typename T>
-inline void GameObject::__AddComponent(void)
-{
-    std::cout << "Not a component" << std::endl;
+	// Call template specialization
+	RemoveComponent<T>();
 }
 
 template <>
-inline PhysicsComponent * GameObject::__GetComponent<PhysicsComponent>(void)
+inline PhysicsComponent * GameObject::GetComponent<PhysicsComponent>(void)
 {
-    std::cout << "Physic component" << std::endl;
-    return nullptr;
-}
-
-inline AIComponent * GameObject::__GetComponent<AIComponent>(void)
-{
-    std::cout << "AI component" << std::endl;
-    return nullptr;
+	return m_physics;
 }
 
 template <>
-inline void GameObject::__AddComponent<PhysicsComponent>(void)
+inline AIComponent * GameObject::GetComponent<AIComponent>(void)
 {
-    std::cout << "Add physic component" << std::endl;
+	return m_ai;
 }
 
 template <>
-inline void GameObject::__AddComponent<AIComponent>(void)
+inline RenderComponent * GameObject::GetComponent<RenderComponent>(void)
 {
-    std::cout << "Add ai component" << std::endl;
+	if(m_render->IsAvailable())
+		return m_render;
+
+	return nullptr;
+}
+
+template <>
+inline void GameObject::AddComponent<PhysicsComponent>(void)
+{
+	std::cout << "Add physic component" << std::endl;
+}
+
+template <>
+inline void GameObject::AddComponent<AIComponent>(void)
+{
+	std::cout << "Add ai component" << std::endl;
+}
+
+template <>
+inline void GameObject::RemoveComponent<PhysicsComponent>()
+{
+	m_physics = nullptr;
+}
+
+template <>
+inline void GameObject::RemoveComponent<AIComponent>()
+{
+	m_ai = nullptr;
 }

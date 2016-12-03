@@ -4,14 +4,22 @@
 #include "Physic/Vec2.hpp"
 #include "Physic/Location/TransformableLocation.hpp"
 
+/// \class	Kinematic
+/// \brief	Handle an Object in time, with his
+///			Location, orientation, velocity and rotation
 class Kinematic : public TransformableLocation
 {
 public :
-	Kinematic(sf::Transformable* transformable);
-
-	Kinematic(sf::Transformable* transformable, 
-			  Vec2 const& velocity, 
-			  float rotation);
+	
+	/// \brief	Construct a void Kinematic
+	/// \param	transformable : used to create
+	///			the location of the Kinematic
+	/// \warning The Transformable can be NULL
+	Kinematic(sf::Transformable* transformable = nullptr);
+	
+	/// \brief 
+	/// \param transformable 
+	void Init(sf::Transformable* transformable);
 
 	void Update(float time);
 

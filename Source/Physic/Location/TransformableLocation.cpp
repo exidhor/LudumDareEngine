@@ -6,6 +6,11 @@ TransformableLocation::TransformableLocation(sf::Transformable * transformable)
 	// nothing
 }
 
+void TransformableLocation::Init(sf::Transformable * transformable)
+{
+	m_transformable = transformable;
+}
+
 void TransformableLocation::Integrate(float time, Vec2 const& velocity, float rotation)
 {
 	Move(velocity * time);

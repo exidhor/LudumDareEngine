@@ -1,10 +1,21 @@
-#include "AI/AIComponent.hpp"
+#include "Component/AIComponent.hpp"
+#include "Component/GameObject.hpp"
 
 AIComponent::AIComponent(sf::Transformable* transformable)
 	: m_kinematic(transformable),
-	m_steering(nullptr)
+	m_steering(nullptr),
+	m_parent(nullptr)
 {
 	// nothing
+}
+
+void AIComponent::Init(GameObject* parent)
+{
+	m_parent = parent;
+
+	m_kinematic.Init(m_parent->GetTransformable());
+
+	m_steering = nullptr;
 }
 
 void AIComponent::SetKinematicSteering(KinematicSteering* steering)

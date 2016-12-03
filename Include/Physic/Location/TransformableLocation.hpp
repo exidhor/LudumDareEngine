@@ -9,7 +9,9 @@
 class TransformableLocation : public Location
 {
 public:
-	TransformableLocation(sf::Transformable * transformable);
+	TransformableLocation(sf::Transformable * transformable = nullptr);
+
+	void Init(sf::Transformable * transformable);
 
 	void Integrate(float time, Vec2 const& velocity, float rotation);
 

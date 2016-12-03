@@ -1,19 +1,15 @@
 #include "AI/Kinematic/Kinematic.hpp"
 
 Kinematic::Kinematic(sf::Transformable* transformable)
-	: Kinematic(transformable, Vec2(), 0)
+	: TransformableLocation(transformable),
+	m_rotation(0)
 {
 	// nothing
 }
 
-Kinematic::Kinematic(sf::Transformable* transformable,
-					 Vec2 const& velocity,
-					 float rotation)
-	: TransformableLocation(transformable),
-	m_velocity(velocity),
-	m_rotation(rotation)
+void Kinematic::Init(sf::Transformable* transformable)
 {
-	// nothing
+	TransformableLocation::Init(transformable);
 }
 
 void Kinematic::Update(float time)

@@ -4,12 +4,12 @@
 /// \author  Aredhele
 /// \version 0.1.0
 
-#ifndef __GAME_OBJECT_HPP
-#define __GAME_OBJECT_HPP
+#pragma once
 
 #include <iostream>
-#include "AI/AIComponent.hpp"
-#include "Physic/PhysicsComponent.hpp"
+#include "Component/AIComponent.hpp"
+#include "Component/RenderComponent.hpp"
+#include "Component/PhysicsComponent.hpp"
 
 /// \class  GameObject
 /// \brief  Base class for all objects manipulated by the engine
@@ -34,19 +34,23 @@ public:
     template <typename T>
     void AddComponent(void);
 
+	template <typename T>
+	void RemoveComponent();
+
+	void SetLayer(int layer);
+
+	int GetLayer() const;
+
+	sf::Transformable* GetTransformable() const;
+
 private:
 
-    /// \brief  Return nullptr because there's no component of type T
-    /// \return nullptr
-    template <typename T>
-    T * __GetComponent(void);
+	int m_layer;
 
-    /// \brief  Do nothing because the component doesn't exist
-    template <typename T>
-    void __AddComponent(void);
+	AIComponent* m_ai;
+	PhysicsComponent* m_physics;
+	RenderComponent* m_render;
 };
 
+
 #include "Component/GameObject.inl"
-
-#endif // __GAME_OBJECT_HPP
-

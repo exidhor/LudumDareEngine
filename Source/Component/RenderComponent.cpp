@@ -1,24 +1,29 @@
 #include "Component/RenderComponent.hpp"
 
 RenderComponent::RenderComponent()
-	: sf::Sprite(),
+	: m_sprite(),
 	m_available(true)
 {
 	// nothing
 }
 
 RenderComponent::RenderComponent(sf::Texture const& texture)
-	: sf::Sprite(texture),
+	: m_sprite(texture),
 	m_available(true)
 {
 	// nothing
 }
 
 RenderComponent::RenderComponent(const sf::Texture &texture, const sf::IntRect &rectangle)
-	: sf::Sprite(texture, rectangle),
+	: m_sprite(texture, rectangle),
 	m_available(true)
 {
 	// nothing
+}
+
+sf::Transformable* RenderComponent::GetTranformable()
+{
+	return &m_sprite;
 }
 
 void RenderComponent::Enable()

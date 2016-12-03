@@ -41,10 +41,10 @@ std::vector<GameObject*> World::GetDrawable() const
 
 std::vector<GameObject*> World::GetPhysics() const
 {
-	
+	return std::vector<GameObject*>(); // todo 
 }
 
 std::vector<GameObject*> World::GetLayer(int layer) const
 {
-	
+	return std::vector<GameObject*>(); // todo 
 }

@@ -1,22 +1,22 @@
 #include "AI/Kinematic/KinematicBehaviors.hpp"
 
-void KinematicHelper::ClipToMax_CheckZero(Vec2 * linear, float maxSpeed)
+void KinematicHelper::ClipToMax_CheckZero(Vec2 * direction, float maxSpeed)
 {
 	// If there is no direction, do nothing
-	if (linear->SquareLength() > 0)
+	if (direction->SquareLength() > 0)
 	{
-		linear->Normalise();
-		(*linear) *= maxSpeed;
+		direction->Normalise();
+		(*direction) *= maxSpeed;
 	}
 }
 
-void KinematicHelper::ClipToMax_CheckMax(Vec2 * linear, float maxSpeed)
+void KinematicHelper::ClipToMax_CheckMax(Vec2 * direction, float maxSpeed)
 {
 	// If that is too fast, then clip the speed
-	if (linear->SquareLength() > maxSpeed * maxSpeed)
+	if (direction->SquareLength() > maxSpeed * maxSpeed)
 	{
-		linear->Normalise();
-		(*linear) *= maxSpeed;
+		direction->Normalise();
+		(*direction) *= maxSpeed;
 	}
 }
 

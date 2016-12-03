@@ -3,11 +3,24 @@
 #include "AI/MathHelper.hpp"
 #include "Physic/Vec2.hpp"
 
+
 namespace KinematicHelper
 {
-	void ClipToMax_CheckZero(Vec2 * linear, float maxSpeed);
+	/**
+	 * \brief	Clip the linear vector to the maxSpeed direction
+	 *			It only checks if the linear length is zero
+	 * \param	direction : the linear to clip 
+	 * \param	maxSpeed : the maxSpeed of the object
+	 */
+	void ClipToMax_CheckZero(Vec2 * direction, float maxSpeed);
 
-	void ClipToMax_CheckMax(Vec2 * linear, float maxSpeed);
+	/**
+	* \brief	Clip the linear vector to the maxSpeed direction
+	*			It only checks if the linear is upper than the max
+	* \param	direction : the linear to clip
+	* \param	maxSpeed : the maxSpeed of the object
+	*/
+	void ClipToMax_CheckMax(Vec2 * direction, float maxSpeed);
 }
 
 
@@ -19,12 +32,20 @@ class KinematicSeek : public TargetedKinematicMovement
 {
 public :
 	/**
-	* Works out the desired steering and writes it into the given
-	* steering output structure.
+	* \brief	Works out the desired steering and writes it into the given
+	*			steering output structure.
+	* \param	maxSpeed : the maximum speed to go toward the seek target
+	* \param	target : The position of the target (it's a Location because
+	*			the target can move)
 	*/
 	KinematicSeek(float maxSpeed,
 				  const Location* target);
 
+	/**
+	 * \brief	// todo 
+	 * \param output : 
+	 * \param character : 
+	 */
 	virtual void GiveSteering(SteeringOutput* output,
 	                          Kinematic* character);
 };

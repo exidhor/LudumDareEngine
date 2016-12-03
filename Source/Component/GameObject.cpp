@@ -26,5 +26,5 @@ int GameObject::GetLayer() const
 
 sf::Transformable* GameObject::GetTransformable() const
 {
-	return m_render;
+	return m_render->GetTranformable();
 }

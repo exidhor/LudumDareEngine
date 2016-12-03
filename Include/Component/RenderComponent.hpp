@@ -1,7 +1,7 @@
 #pragma once
 #include <SFML/Graphics.hpp>
 
-class RenderComponent : public sf::Sprite
+class RenderComponent : public sf::Drawable
 {
 public :
 	RenderComponent();
@@ -9,6 +9,8 @@ public :
 	RenderComponent(sf::Texture const& texture);
 
 	RenderComponent(const sf::Texture &texture, const sf::IntRect &rectangle);
+
+	sf::Transformable* GetTranformable();
 
 	void Enable();
 	void Disable();
@@ -19,5 +21,6 @@ protected :
 	virtual void draw(sf::RenderTarget &target, sf::RenderStates states) const;
 
 private :
+	sf::Sprite m_sprite;
 	bool m_available;
 };

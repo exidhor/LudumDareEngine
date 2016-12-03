@@ -26,7 +26,7 @@ public :
 				  const Location* target);
 
 	virtual void GiveSteering(SteeringOutput* output,
-	                          Kinematic* character) const;
+	                          Kinematic* character);
 };
 
 
@@ -48,7 +48,7 @@ public:
 	* steering output structure.
 	*/
 	virtual void GiveSteering(SteeringOutput* output,
-	                          Kinematic* character) const;
+	                          Kinematic* character);
 };
 
 
@@ -70,7 +70,7 @@ public:
 	* steering output structure.
 	*/
 	virtual void GiveSteering(SteeringOutput* output,
-	                          Kinematic* character) const;
+	                          Kinematic* character);
 
 	void SetTimeToTarget(float timeToTarget);
 	void SetTargetRadius(float targetRadius);
@@ -112,7 +112,7 @@ public:
 	* steering output structure.
 	*/
 	virtual void GiveSteering(SteeringOutput* output,
-	                          Kinematic* character) const;
+	                          Kinematic* character);
 
 	void SetMaxRotation(float maxRotation);
 	float GetMaxRotation() const;

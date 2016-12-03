@@ -9,9 +9,9 @@ public :
 	TargetedKinematicMovement(float maxSpeed,
 							  const Location* target);
 
-	Vec2 getTargetPosition() const;
+	Vec2 GetTargetPosition() const;
 
-	void setTargetPosition(const Location * target);
+	void SetTargetPosition(const Location * target);
 
 private:
 	const Location* m_target;

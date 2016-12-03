@@ -10,7 +10,7 @@ public :
 	KinematicSteering(float maxSpeed);
 
 	virtual void GiveSteering(SteeringOutput* output,
-	                          Kinematic* character) const = 0;
+	                          Kinematic* character) = 0;
 
 	void SetMaxSpeed(float maxSpeed);
 	float GetMaxSpeed() const;

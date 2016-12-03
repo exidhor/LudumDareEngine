@@ -30,12 +30,12 @@ KinematicSeek::KinematicSeek(float maxSpeed,
 { }
 
 void KinematicSeek::GiveSteering(SteeringOutput* output,
-                                 Kinematic* character) const
+                                 Kinematic* character)
 {
 	output->isKinematic = true;
 
 	// First work out the direction
-	output->linear = TargetedKinematicMovement::getTargetPosition();
+	output->linear = TargetedKinematicMovement::GetTargetPosition();
 	output->linear -= character->GetPosition();
 
 	// If there is no direction, do nothing
@@ -53,13 +53,13 @@ KinematicFlee::KinematicFlee(float maxSpeed,
 { }
 
 void KinematicFlee::GiveSteering(SteeringOutput* output,
-                                 Kinematic* character) const
+                                 Kinematic* character)
 {
 	output->isKinematic = true;
 
 	// First work out the direction
 	output->linear = character->GetPosition();
-	output->linear -= TargetedKinematicMovement::getTargetPosition();
+	output->linear -= TargetedKinematicMovement::GetTargetPosition();
 
 	// If there is no direction, do nothing
 	KinematicHelper::ClipToMax_CheckZero(&output->linear,
@@ -84,12 +84,12 @@ KinematicArrive::KinematicArrive(float maxSpeed,
 { }
 
 void KinematicArrive::GiveSteering(SteeringOutput* output,
-                                   Kinematic* character) const
+                                   Kinematic* character)
 {
 	output->isKinematic = true;
 
 	// First work out the direction
-	output->linear = TargetedKinematicMovement::getTargetPosition();
+	output->linear = TargetedKinematicMovement::GetTargetPosition();
 	output->linear -= character->GetPosition();
 
 	float squareDistance = output->linear.SquareLength();
@@ -164,7 +164,7 @@ KinematicWander::KinematicWander(float maxSpeed,
 { }
 
 void KinematicWander::GiveSteering(SteeringOutput* output,
-                                   Kinematic* character) const
+                                   Kinematic* character)
 {
 	output->isKinematic = true;
 

@@ -8,12 +8,12 @@ TargetedKinematicMovement::TargetedKinematicMovement(float maxSpeed,
 	// nothing
 }
 
-Vec2 TargetedKinematicMovement::getTargetPosition() const
+Vec2 TargetedKinematicMovement::GetTargetPosition() const
 {
 	return m_target->GetPosition();
 }
 
-void TargetedKinematicMovement::setTargetPosition(const Location * target)
+void TargetedKinematicMovement::SetTargetPosition(const Location * target)
 {
 	m_target = target;
 }

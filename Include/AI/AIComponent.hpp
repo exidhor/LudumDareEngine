@@ -11,7 +11,8 @@ public :
 
 	void Update(float time);
 
-	Location* GetLocation();
+	const Location* GetLocation() const;
+	const Kinematic* GetKinematic() const;
 
 private :
 	Kinematic m_kinematic;

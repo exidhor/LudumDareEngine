@@ -24,7 +24,12 @@ void AIComponent::Update(float time)
 	m_kinematic.Update(time, output);
 }
 
-Location* AIComponent::GetLocation()
+const Location* AIComponent::GetLocation() const
+{
+	return &m_kinematic;
+}
+
+const Kinematic* AIComponent::GetKinematic() const
 {
 	return &m_kinematic;
 }

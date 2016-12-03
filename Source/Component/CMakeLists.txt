@@ -10,9 +10,8 @@ SET(COMPONENT_INC_PATH ${CMAKE_SOURCE_DIR}/Include/Component)
 
 SET(COMPONENT_SOURCE "")
 
-SET(MAIN_HEADER
-        ${COMPONENT_INC_PATH}/GameObject.hpp
-        ${COMPONENT_INC_PATH}/GameObject.inl)
+SET(COMPONENT_HEADER
+        ${COMPONENT_INC_PATH}/GameObject.hpp)
 
 # Adding source to the target
 TARGET_SOURCES(${TARGET_COMPILE}

@@ -32,7 +32,7 @@ inline T * GameObject::__GetComponent(void)
 }
 
 template <typename T>
-void GameObject::__AddComponent(void)
+inline void GameObject::__AddComponent(void)
 {
     std::cout << "Not a component" << std::endl;
 }

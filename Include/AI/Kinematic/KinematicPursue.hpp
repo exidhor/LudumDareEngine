@@ -31,10 +31,17 @@ public :
 	virtual void GiveSteering(SteeringOutput* output,
 							  Kinematic* character);
 
-	
+	/**
+	 * \brief	Set the Target to pursue
+	 * \param	target : the target to pursue (we need a Kinematic because we need
+	 *			to access to the velocity of the target)
+	 */
 	void SetPursueTarget(const Kinematic* target);
 	
-	
+	/**
+	 * \brief	Set the maximum time to predicate
+	 * \param	maxPredictionTime : the maximum duration to predicate 
+	 */
 	void SetMaxPredictionTime(float maxPredictionTime);
 
 private :

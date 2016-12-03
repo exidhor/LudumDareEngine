@@ -1,5 +1,5 @@
 #pragma once
-#include "AI/Kinematic/TargetedKinematicMovement.hpp"
+#include "AI/Kinematic/TargetedKinematicSteering.hpp"
 #include "AI/MathHelper.hpp"
 #include "Physic/Vec2.hpp"
 
@@ -29,7 +29,7 @@ namespace KinematicHelper
 * \brief Kinematic seek moves at full speed towards its target at each
 *		 frame.
 */
-class KinematicSeek : public TargetedKinematicMovement
+class KinematicSeek : public TargetedKinematicSteering
 {
 public :
 	/**
@@ -83,7 +83,7 @@ public:
 * \brief Kinematic arrive behaves just like seek unless it is close to
 *		 the target, in which case it moves slower and eventually stops.
 */
-class KinematicArrive : public TargetedKinematicMovement
+class KinematicArrive : public TargetedKinematicSteering
 {
 public:
 

@@ -1,6 +1,6 @@
-#include "AI/Kinematic/TargetedKinematicMovement.hpp"
+#include "AI/Kinematic/TargetedKinematicSteering.hpp"
 
-TargetedKinematicMovement::TargetedKinematicMovement(float maxSpeed,
+TargetedKinematicSteering::TargetedKinematicSteering(float maxSpeed,
 													 const Location* target)
 	: KinematicSteering(maxSpeed), 
 	m_target(target)
@@ -8,12 +8,12 @@ TargetedKinematicMovement::TargetedKinematicMovement(float maxSpeed,
 	// nothing
 }
 
-Vec2 TargetedKinematicMovement::GetTargetPosition() const
+Vec2 TargetedKinematicSteering::GetTargetPosition() const
 {
 	return m_target->GetPosition();
 }
 
-void TargetedKinematicMovement::SetTargetPosition(const Location * target)
+void TargetedKinematicSteering::SetTargetLocation(const Location * target)
 {
 	m_target = target;
 }

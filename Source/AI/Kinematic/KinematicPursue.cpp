@@ -41,7 +41,7 @@ void KinematicPursue::GiveSteering(SteeringOutput* output,
 	seekPosition += m_pursueTarget->GetVelocity() * prediction;
 	m_seekLocation.SetPosition(seekPosition);
 
-	TargetedKinematicMovement::SetTargetPosition(&m_seekLocation);
+	TargetedKinematicSteering::SetTargetLocation(&m_seekLocation);
 	KinematicSeek::GiveSteering(output, character);
 }
 

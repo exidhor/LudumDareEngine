@@ -65,12 +65,12 @@ void configureSteering(int selectedShapeIndex,
 
 		if(targetIsPoint)
 		{
-			seeks[selectedShapeIndex].SetTargetPosition(new StationaryLocation(target));
+			seeks[selectedShapeIndex].SetTargetLocation(new StationaryLocation(target));
 			std::cout << "SEEK selected (target : " << target.x << ", " << target.y << ")" << std::endl;
 		}
 		else
 		{
-			seeks[selectedShapeIndex].SetTargetPosition(ias[targetIndex].GetKinematic());
+			seeks[selectedShapeIndex].SetTargetLocation(ias[targetIndex].GetKinematic());
 		}
 
 		
@@ -84,12 +84,12 @@ void configureSteering(int selectedShapeIndex,
 
 		if (targetIsPoint)
 		{
-			flees[selectedShapeIndex].SetTargetPosition(new StationaryLocation(target));
+			flees[selectedShapeIndex].SetTargetLocation(new StationaryLocation(target));
 			std::cout << "FLEE selected (target : " << target.x << ", " << target.y << ")" << std::endl;
 		}
 		else
 		{
-			flees[selectedShapeIndex].SetTargetPosition(ias[targetIndex].GetKinematic());
+			flees[selectedShapeIndex].SetTargetLocation(ias[targetIndex].GetKinematic());
 		}	
 		break;
 
@@ -101,12 +101,12 @@ void configureSteering(int selectedShapeIndex,
 		
 		if (targetIsPoint)
 		{
-			arrives[selectedShapeIndex].SetTargetPosition(new StationaryLocation(target));
+			arrives[selectedShapeIndex].SetTargetLocation(new StationaryLocation(target));
 			std::cout << "ARRIVING selected (target : " << target.x << ", " << target.y << ")" << std::endl;
 		}
 		else
 		{
-			arrives[selectedShapeIndex].SetTargetPosition(ias[targetIndex].GetKinematic());
+			arrives[selectedShapeIndex].SetTargetLocation(ias[targetIndex].GetKinematic());
 		}	
 		break;
 

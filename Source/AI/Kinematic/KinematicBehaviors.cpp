@@ -26,7 +26,7 @@ void KinematicHelper::ClipToMax_CheckMax(Vec2 * direction, float maxSpeed)
 
 KinematicSeek::KinematicSeek(float maxSpeed,
 							 const Location* target)
-	: TargetedKinematicMovement(maxSpeed, target)
+	: TargetedKinematicSteering(maxSpeed, target)
 { }
 
 void KinematicSeek::GiveSteering(SteeringOutput* output,
@@ -35,7 +35,7 @@ void KinematicSeek::GiveSteering(SteeringOutput* output,
 	output->isKinematic = true;
 
 	// First work out the direction
-	output->linear = TargetedKinematicMovement::GetTargetPosition();
+	output->linear = TargetedKinematicSteering::GetTargetPosition();
 	output->linear -= character->GetPosition();
 
 	// If there is no direction, do nothing
@@ -59,7 +59,7 @@ void KinematicFlee::GiveSteering(SteeringOutput* output,
 
 	// First work out the direction
 	output->linear = character->GetPosition();
-	output->linear -= TargetedKinematicMovement::GetTargetPosition();
+	output->linear -= TargetedKinematicSteering::GetTargetPosition();
 
 	// If there is no direction, do nothing
 	KinematicHelper::ClipToMax_CheckZero(&output->linear,
@@ -75,7 +75,7 @@ KinematicArrive::KinematicArrive(float maxSpeed,
 								 float timeToTarget,
 								 float targetRadius,
 								 float slowRadius)
-	: TargetedKinematicMovement(maxSpeed,
+	: TargetedKinematicSteering(maxSpeed,
 								target),
 	m_timeToTarget(timeToTarget),
 	m_targetRadius(targetRadius),
@@ -89,7 +89,7 @@ void KinematicArrive::GiveSteering(SteeringOutput* output,
 	output->isKinematic = true;
 
 	// First work out the direction
-	output->linear = TargetedKinematicMovement::GetTargetPosition();
+	output->linear = TargetedKinematicSteering::GetTargetPosition();
 	output->linear -= character->GetPosition();
 
 	float squareDistance = output->linear.SquareLength();

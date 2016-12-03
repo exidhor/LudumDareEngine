@@ -13,14 +13,14 @@ set(KINEMATIC_SOURCE
         ${KINEMATIC_SRC_PATH}/KinematicPursue.cpp
         ${KINEMATIC_SRC_PATH}/KinematicSteering.cpp
         ${KINEMATIC_SRC_PATH}/KinematicBehaviors.cpp
-        ${KINEMATIC_SRC_PATH}/TargetedKinematicMovement.cpp)
+        ${KINEMATIC_SRC_PATH}/TargetedKinematicSteering.cpp)
 
 set(KINEMATIC_HEADER
         ${KINEMATIC_INC_PATH}/Kinematic.hpp
         ${KINEMATIC_INC_PATH}/KinematicPursue.hpp
         ${KINEMATIC_INC_PATH}/KinematicSteering.hpp
         ${KINEMATIC_INC_PATH}/KinematicBehaviors.hpp
-        ${KINEMATIC_INC_PATH}/TargetedKinematicMovement.hpp)
+        ${KINEMATIC_INC_PATH}/TargetedKinematicSteering.hpp)
 
 # Adding source to the target
 target_sources(${TARGET_COMPILE}

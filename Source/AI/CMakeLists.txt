@@ -15,8 +15,7 @@ set(AI_SOURCE
 set(AI_HEADER
         ${AI_INC_PATH}/AIEngine.hpp
         ${AI_INC_PATH}/MathHelper.hpp
-        ${AI_INC_PATH}/SteeringOutput.hpp
-        ${AI_INC_PATH}/SteeringBehavior.hpp)
+        ${AI_INC_PATH}/SteeringOutput.hpp)
 
 # Adding source to the target
 target_sources(${TARGET_COMPILE}

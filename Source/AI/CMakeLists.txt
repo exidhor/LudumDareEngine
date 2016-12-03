@@ -14,6 +14,7 @@ set(AI_SOURCE
         ${AI_SRC_PATH}/SteeringOutput.cpp)
 
 set(AI_HEADER
+        ${AI_INC_PATH}/AIEngine.hpp
         ${AI_INC_PATH}/MathHelper.hpp
         ${AI_INC_PATH}/AIComponent.hpp
         ${AI_INC_PATH}/SteeringOutput.hpp

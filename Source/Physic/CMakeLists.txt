@@ -8,11 +8,16 @@ CMAKE_MINIMUM_REQUIRED(VERSION 3.1)
 SET(PHYSIC_SRC_PATH ${CMAKE_SOURCE_DIR}/Source/Physic)
 SET(PHYSIC_INC_PATH ${CMAKE_SOURCE_DIR}/Include/Physic)
 
-set(PHYSIC_SOURCE "")
+set(PHYSIC_SOURCE
+        ${PHYSIC_SRC_PATH}/PhysicEngine.cpp
+        ${PHYSIC_SRC_PATH}/PhysicsComponent.cpp)
 
 set(PHYSIC_HEADER
+        ${PHYSIC_INC_PATH}/Ray.hpp
+        ${PHYSIC_INC_PATH}/Ray.inl
         ${PHYSIC_INC_PATH}/Vec2.hpp
         ${PHYSIC_INC_PATH}/Vec2.inl
+        ${PHYSIC_INC_PATH}/PhysicEngine.hpp
         ${PHYSIC_INC_PATH}/PhysicsComponent.hpp)
 
 # Adding source to the target
@@ -23,5 +28,6 @@ target_sources(${TARGET_COMPILE}
 
 # Copying files
 add_custom_command(TARGET ${TARGET_PUBLISHING} POST_BUILD
+        COMMAND ${CMAKE_COMMAND} -E copy ${PHYSIC_SOURCE} ${PUB_SRC_PATH}/Physic/
         COMMAND ${CMAKE_COMMAND} -E copy ${PHYSIC_HEADER} ${PUB_INC_PATH}/Physic/
         COMMENT "[INFO] Copying Phsyic files ...")

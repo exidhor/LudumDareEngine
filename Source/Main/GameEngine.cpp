@@ -26,7 +26,6 @@ void GameEngine::Start(void)
         return;
     }
 
-
     // Enter the game loop
     Run();
 }

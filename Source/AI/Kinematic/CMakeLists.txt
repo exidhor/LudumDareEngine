@@ -10,7 +10,7 @@ SET(KINEMATIC_INC_PATH ${CMAKE_SOURCE_DIR}/Include/AI/Kinematic)
 
 set(KINEMATIC_SOURCE
         ${KINEMATIC_SRC_PATH}/Kinematic.cpp
-        ${KINEMATIC_SRC_PATH}/KinematicMovement.cpp
+        ${KINEMATIC_SRC_PATH}/KinematicSteering.cpp
         ${KINEMATIC_SRC_PATH}/KinematicBehaviors.cpp
         ${KINEMATIC_SRC_PATH}/TargetedKinematicMovement.cpp)
 

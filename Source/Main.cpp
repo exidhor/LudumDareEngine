@@ -1,8 +1,13 @@
 #include "Main/Engine.hpp"
 #include "Main/GameEngine.hpp"
+#include "Component/GameObject.hpp"
 
 int main(void)
 {
+    /*GameObject go;
+    go.AddComponent<std::string>();
+    go.AddComponent<PhysicsComponent>();*/
+
     // Instantiating a game engine
     GameEngine gameEngine;
 

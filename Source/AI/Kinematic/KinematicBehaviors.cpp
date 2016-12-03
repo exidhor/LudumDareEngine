@@ -81,7 +81,7 @@ void KinematicArrive::GiveSteering(SteeringOutput* output,
 {
 	// First work out the direction
 	output->linear = TargetedKinematicMovement::getTargetPosition();
-	output->linear -= TargetedKinematicMovement::getTargetPosition();
+	output->linear -= character->GetPosition();
 
 	// If there is no direction, do nothing
 	if (output->linear.SquareLength() < m_radius * m_radius)

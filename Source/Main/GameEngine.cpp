@@ -1,9 +1,6 @@
 #include <iostream>
 
 #include "Game.hpp"
-#include "Main/Engine.hpp"
-#include "Main/GameEngine.hpp"
-#include "Main/EngineString.hpp"
 
 /* explicit */ GameEngine::GameEngine(void)
 : m_pGame(nullptr)
@@ -83,6 +80,9 @@ void GameEngine::Initialize(void)
     m_isInitialized = true;
     Engine::pGameEngineInstance = this;
 
+    // Initializing pool allocators
+    InitializeMemory();
+
     // See OnPostInitialize
     OnPostInitialize();
 }
@@ -132,4 +132,13 @@ void GameEngine::OnPostExit(void)
     // Calling callback method to warn about
     // the engine post exit
     m_pGame->OnPostExit();
+}
+
+void GameEngine::InitializeMemory(void)
+{
+    m_spriteAllocator.Init(ENGINE_DEFAULT_POOL_SIZE);
+    m_gameObjectAllocator.Init(ENGINE_DEFAULT_POOL_SIZE);
+    m_aiComponentAllocator.Init(ENGINE_DEFAULT_POOL_SIZE);
+    m_renderComponentAllocator.Init(ENGINE_DEFAULT_POOL_SIZE);
+    m_physicComponentAllocator.Init(ENGINE_DEFAULT_POOL_SIZE);
 }

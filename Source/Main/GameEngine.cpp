@@ -26,13 +26,39 @@ void GameEngine::Start(void)
         return;
     }
 
+
     // Enter the game loop
     Run();
 }
 
 void GameEngine::Run(void)
 {
-    // TODO
+    m_isRunning = true;
+
+    sf::Clock clock;
+    double lag = 0.0;
+    double previous = clock.getElapsedTime().asSeconds();
+
+    while(m_isRunning)
+    {
+        double current = clock.getElapsedTime().asSeconds();
+        double elapsed = current - previous;
+        previous = current;
+
+        lag += elapsed;
+
+        while(lag >= SECONDS_PER_UPDATE)
+        {
+            // Updating
+            Update((float)SECONDS_PER_UPDATE);
+
+            // Retrieve elapsed time
+            lag -= SECONDS_PER_UPDATE;
+        }
+    }
+
+    // Exiting game engine
+    Exit();
 }
 
 void GameEngine::OnPreInitialize(void)
@@ -71,20 +97,40 @@ void GameEngine::OnPostInitialize(void)
 
 void GameEngine::OnPreUpdate(float dt)
 {
+    // Calling callback method to permit
+    // the user to process input
+    m_pGame->OnPreUpdate(dt);
+}
 
+void GameEngine::Update(float dt)
+{
+    OnPreUpdate(dt);
+    OnPostUpdate(dt);
 }
 
 void GameEngine::OnPostUpdate(float dt)
 {
-
+    // Calling callback method to permit
+    // the user to update the game
+    m_pGame->OnPostUpdate(dt);
 }
 
-void GameEngine::OnPreRelease(void)
+void GameEngine::OnPreExit(void)
 {
-
+    // Calling callback method to warn about
+    // the engine pre exit
+    m_pGame->OnPreExit();
 }
 
-void GameEngine::OnPostRelease(void)
+void GameEngine::Exit(void)
 {
+    OnPreExit();
+    OnPostExit();
+}
 
+void GameEngine::OnPostExit(void)
+{
+    // Calling callback method to warn about
+    // the engine post exit
+    m_pGame->OnPostExit();
 }

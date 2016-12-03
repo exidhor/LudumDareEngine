@@ -26,17 +26,20 @@ public:
     void OnPostInitialize(void);
 
     /// \brief  Called before engine update
+    ///         Used to process inputs
+    /// \param  dt The elapsed time since the last update
     void OnPreUpdate(float dt);
 
     /// \brief  Called after engine update
+    ///         Used to update the game
     /// \brief  dt The elapsed time since the last update
     void OnPostUpdate(float dt);
 
     /// \brief  Called before the engine release
-    void OnPreRelease(void);
+    void OnPreExit(void);
 
     /// \Brief  Called after the engine release
-    void OnPostRelease(void);
+    void OnPostExit(void);
 };
 
 #endif // __GAME_HPP

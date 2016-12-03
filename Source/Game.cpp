@@ -22,10 +22,12 @@ void Game::OnPreInitialize(void)
 /// \brief  Called after engine initialization
 void Game::OnPostInitialize(void)
 {
-    //
+    // Code
 }
 
 /// \brief  Called before engine update
+///         Used to process inputs
+/// \param  dt The elapsed time since the last update
 void Game::OnPreUpdate(float dt)
 {
     // Code
@@ -33,21 +35,21 @@ void Game::OnPreUpdate(float dt)
 }
 
 /// \brief  Called after engine update
+///         Used to update the game
 /// \brief  dt The elapsed time since the last update
 void Game::OnPostUpdate(float dt)
 {
-    // Code
     (void)dt;
 }
 
 /// \brief  Called before the engine release
-void Game::OnPreRelease(void)
+void Game::OnPreExit(void)
 {
     // Code
 }
 
 /// \Brief  Called after the engine release
-void Game::OnPostRelease(void)
+void Game::OnPostExit(void)
 {
     // Code
 }

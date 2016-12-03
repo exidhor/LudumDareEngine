@@ -32,8 +32,16 @@ public:
 
 private:
 
-    Game * m_pGame;         ///< The game user class
-    bool   m_isInitialized; ///< The status of the game engine
+    Game * m_pGame;             ///< The game user class
+    bool   m_isRunning;         ///< Tells if the game is running
+    bool   m_isInitialized;     ///< The status of the game engine
+
+    /// \brief   Fixed update (ups = update per second)
+    ///          16.67 =  60 ups
+    ///          11.11 =  90 ups
+    ///           8.33 = 120 ups
+    ///           4.16 = 240 ups
+    const double SECONDS_PER_UPDATE = 1.0 / 120.0;
 
     /// \brief  Contains the game loop
     void Run(void);
@@ -47,15 +55,21 @@ private:
     /// \brief  Called before engine update
     void OnPreUpdate(float dt);
 
+    /// \brief  Called on engine update
+    void Update(float dt);
+
     /// \brief  Called after engine update
     /// \brief  dt The elapsed time since the last update
     void OnPostUpdate(float dt);
 
     /// \brief  Called before the engine release
-    void OnPreRelease(void);
+    void OnPreExit(void);
+
+    /// \brief  Called on engine exit
+    void Exit(void);
 
     /// \Brief  Called after the engine release
-    void OnPostRelease(void);
+    void OnPostExit(void);
 };
 
 #endif // __GAME_ENGINE_HPP

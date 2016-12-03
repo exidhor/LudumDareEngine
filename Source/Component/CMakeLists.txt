@@ -8,10 +8,18 @@ CMAKE_MINIMUM_REQUIRED(VERSION 3.1)
 SET(COMPONENT_SRC_PATH ${CMAKE_SOURCE_DIR}/Source/Component)
 SET(COMPONENT_INC_PATH ${CMAKE_SOURCE_DIR}/Include/Component)
 
-SET(COMPONENT_SOURCE "")
+SET(COMPONENT_SOURCE
+        ${COMPONENT_SRC_PATH}/GameObject.cpp
+        ${COMPONENT_SRC_PATH}/AIComponent.cpp
+        ${COMPONENT_SRC_PATH}/PhysicsComponent.cpp
+        ${COMPONENT_SRC_PATH}/RenderComponent.cpp)
 
 SET(COMPONENT_HEADER
-        ${COMPONENT_INC_PATH}/GameObject.hpp)
+        ${COMPONENT_INC_PATH}/GameObject.hpp
+        ${COMPONENT_INC_PATH}/GameObject.inl
+        ${COMPONENT_INC_PATH}/AIComponent.hpp
+        ${COMPONENT_INC_PATH}/PhysicsComponent.hpp
+        ${COMPONENT_INC_PATH}/RenderComponent.hpp)
 
 # Adding source to the target
 TARGET_SOURCES(${TARGET_COMPILE}

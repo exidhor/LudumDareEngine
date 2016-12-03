@@ -12,7 +12,11 @@ SET(MEMORY_SOURCE "")
 
 SET(MEMORY_HEADER
         ${MEMORY_INC_PATH}/Container.hpp
-        ${MEMORY_INC_PATH}/Container.inl)
+        ${MEMORY_INC_PATH}/Container.inl
+        ${MEMORY_INC_PATH}/Resource.hpp
+        ${MEMORY_INC_PATH}/Resource.inl
+        ${MEMORY_INC_PATH}/PoolAllocator.inl
+        ${MEMORY_INC_PATH}/PoolAllocator.hpp)
 
 # Adding source to the target
 TARGET_SOURCES(${TARGET_COMPILE}

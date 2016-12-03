@@ -3,8 +3,8 @@
 #include "Physic/QuadTree/QuadTree.hpp"
 #include "Physic/Vec2.hpp"
 #include "Physic/Ray.hpp"
-#include "World.hpp"
-#include "PhysicsComponent.hpp"
+#include "Main/World.hpp"
+#include "Component/PhysicsComponent.hpp"
 
 #define MAX_OBJECT_PER_LEVEL 10
 #define MAX_LEVEL            5

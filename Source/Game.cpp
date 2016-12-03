@@ -29,7 +29,6 @@ void Game::OnPostInitialize(void)
 /// \param  dt The elapsed time since the last update
 void Game::OnPreUpdate(float dt)
 {
-    // Code
     (void)dt;
 }
 

@@ -9,16 +9,14 @@ SET(PHYSIC_SRC_PATH ${CMAKE_SOURCE_DIR}/Source/Physic)
 SET(PHYSIC_INC_PATH ${CMAKE_SOURCE_DIR}/Include/Physic)
 
 set(PHYSIC_SOURCE
-        ${PHYSIC_SRC_PATH}/PhysicEngine.cpp
-        ${PHYSIC_SRC_PATH}/PhysicsComponent.cpp)
+        ${PHYSIC_SRC_PATH}/PhysicEngine.cpp)
 
 set(PHYSIC_HEADER
         ${PHYSIC_INC_PATH}/Ray.hpp
         ${PHYSIC_INC_PATH}/Ray.inl
         ${PHYSIC_INC_PATH}/Vec2.hpp
         ${PHYSIC_INC_PATH}/Vec2.inl
-        ${PHYSIC_INC_PATH}/PhysicEngine.hpp
-        ${PHYSIC_INC_PATH}/PhysicsComponent.hpp)
+        ${PHYSIC_INC_PATH}/PhysicEngine.hpp)
 
 # Adding source to the target
 target_sources(${TARGET_COMPILE}

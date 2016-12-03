@@ -9,10 +9,12 @@ SET(MAIN_SRC_PATH ${CMAKE_SOURCE_DIR}/Source/Main)
 SET(MAIN_INC_PATH ${CMAKE_SOURCE_DIR}/Include/Main)
 
 SET(MAIN_SOURCE
+        ${MAIN_SRC_PATH}/World.cpp
         ${MAIN_SRC_PATH}/Engine.cpp
         ${MAIN_SRC_PATH}/GameEngine.cpp)
 
 SET(MAIN_HEADER
+        ${MAIN_INC_PATH}/World.hpp
         ${MAIN_INC_PATH}/Engine.hpp
         ${MAIN_INC_PATH}/Singleton.hpp
         ${MAIN_INC_PATH}/GameEngine.hpp

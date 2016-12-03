@@ -31,79 +31,6 @@ enum EBehaviors
 	STOP
 };
 
-int manageInput(sf::RenderWindow & window,
-				std::vector<sf::RectangleShape> & rects,
-				std::vector<AIComponent> & ias,
-				int selectedShapeIndex,
-				sf::Vector2f & offset,
-				std::vector<KinematicSeek> & seeks,
-				std::vector<KinematicFlee> & flees,
-				std::vector<KinematicArrive> & arrives,
-				std::vector<KinematicWander> & wanders)
-{
-	sf::Event event;
-
-	EBehaviors currentBehavior(EBehaviors::NONE);
-	// handle the behaviors selection
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::A) && selectedShapeIndex != -1)
-	{
-		currentBehavior = EBehaviors::SEEK;
-	}
-	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Z) && selectedShapeIndex != -1)
-	{
-		currentBehavior = EBehaviors::FLEE;
-	}
-	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::E) && selectedShapeIndex != -1)
-	{
-		currentBehavior = EBehaviors::ARRIVING;
-	}
-	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::R) && selectedShapeIndex != -1)
-	{
-		currentBehavior = EBehaviors::WANDER;
-	}
-	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::T) && selectedShapeIndex != -1)
-	{
-		currentBehavior = EBehaviors::STOP;
-	}
-
-	// handle the shape selection or the target
-	Vec2 target;
-	bool targetIsSet = false;
-
-	if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
-	{
-		sf::Vector2f mousePosition(sf::Mouse::getPosition(window));
-
-		bool touchShape = false;
-		for (unsigned i = 0; i < rects.size(); i++)
-		{
-			if (rects[i].getGlobalBounds().contains(mousePosition))
-			{
-				selectedShapeIndex = i;
-				offset = rects[selectedShapeIndex].getPosition() - mousePosition;
-				touchShape = true;
-				break;
-			}
-
-			if(!touchShape && currentBehavior != EBehaviors::NONE)
-			{
-				targetIsSet = true;
-				target = mousePosition;
-			}
-		}
-	}
-
-
-	// handle exit status
-	while (window.pollEvent(event))
-	{
-		if (event.type == sf::Event::Closed)
-			window.close();
-	}
-
-	return selectedShapeIndex;
-}
-
 void configureSteering(int selectedShapeIndex,
 					   EBehaviors behavior,
 					   bool targetIsSet, 
@@ -167,6 +94,89 @@ void configureSteering(int selectedShapeIndex,
 	}
 }
 
+int manageInput(sf::RenderWindow & window,
+				std::vector<sf::RectangleShape> & rects,
+				std::vector<AIComponent> & ias,
+				int selectedShapeIndex,
+				sf::Vector2f & offset,
+				std::vector<KinematicSeek> & seeks,
+				std::vector<KinematicFlee> & flees,
+				std::vector<KinematicArrive> & arrives,
+				std::vector<KinematicWander> & wanders)
+{
+	sf::Event event;
+
+	EBehaviors currentBehavior(EBehaviors::NONE);
+	// handle the behaviors selection
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::A) && selectedShapeIndex != -1)
+	{
+		currentBehavior = EBehaviors::SEEK;
+	}
+	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Z) && selectedShapeIndex != -1)
+	{
+		currentBehavior = EBehaviors::FLEE;
+	}
+	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::E) && selectedShapeIndex != -1)
+	{
+		currentBehavior = EBehaviors::ARRIVING;
+	}
+	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::R) && selectedShapeIndex != -1)
+	{
+		currentBehavior = EBehaviors::WANDER;
+	}
+	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::T) && selectedShapeIndex != -1)
+	{
+		currentBehavior = EBehaviors::STOP;
+	}
+
+	// handle the shape selection or the target
+	Vec2 target;
+	bool targetIsSet = false;
+
+	if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
+	{
+		sf::Vector2f mousePosition(sf::Mouse::getPosition(window));
+
+		bool touchShape = false;
+		for (unsigned i = 0; i < rects.size(); i++)
+		{
+			if (rects[i].getGlobalBounds().contains(mousePosition))
+			{
+				selectedShapeIndex = i;
+				offset = rects[selectedShapeIndex].getPosition() - mousePosition;
+				touchShape = true;
+				std::cout << "BOX SELECTED" << std::endl;
+				break;
+			}
+
+			if (!touchShape && currentBehavior != EBehaviors::NONE)
+			{
+				targetIsSet = true;
+				target = mousePosition;
+			}
+		}
+	}
+
+	configureSteering(selectedShapeIndex, 
+					  currentBehavior, 
+					  targetIsSet, 
+					  target, 
+					  ias, 
+					  seeks,
+					  flees, 
+					  arrives, 
+					  wanders);
+
+		// handle exit status
+		while (window.pollEvent(event))
+		{
+			if (event.type == sf::Event::Closed)
+				window.close();
+		}
+
+	return selectedShapeIndex;
+}
+
 void init(std::vector<sf::RectangleShape> & rects, sf::Vector2u const& windowSize)
 {
 	sf::Vector2u minSize(10, 10);
@@ -212,12 +222,14 @@ void testKinematicBehaviors()
 
 	sf::Clock c;
 
+	char a;
+
 	while (window.isOpen())
 	{
 		float time = c.getElapsedTime().asSeconds();
 		c.restart();
 
-		selectedShapeIndex = manageInput(window, 
+		selectedShapeIndex = manageInput(window,
 										 rects, 
 										 ais, 
 										 selectedShapeIndex, 

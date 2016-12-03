@@ -8,12 +8,12 @@ TransformableLocation::TransformableLocation(sf::Transformable * transformable)
 
 void TransformableLocation::Integrate(float time, Vec2 const& velocity, float rotation)
 {
-	SetPosition(velocity * time);
+	Move(velocity * time);
 
 	float orientation = rotation * time;
 	orientation = fmodf(orientation, M_2PI);
 
-	SetOrientation(orientation);
+	Rotate(orientation);
 }
 
 void TransformableLocation::SetPosition(Vec2 const& position)

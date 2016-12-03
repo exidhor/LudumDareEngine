@@ -24,10 +24,17 @@ void Kinematic::Update(float time)
 void Kinematic::Update(float time,
 					   SteeringOutput const& steering)
 {
-	Update(time);
+	if(steering.isKinematic)
+	{
+		TransformableLocation::Integrate(time, steering.linear, steering.angular);
+	}
+	else
+	{
+		Update(time);
 
-	m_velocity += steering.linear * time;
-	m_rotation += steering.angular * time;
+		m_velocity += steering.linear * time;
+		m_rotation += steering.angular * time;
+	}
 }
 
 void Kinematic::GetNewOrientation(Vec2 const& velocity)

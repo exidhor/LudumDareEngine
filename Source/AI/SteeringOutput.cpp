@@ -1,14 +1,15 @@
 #include "AI/SteeringOutput.hpp"
 
 SteeringOutput::SteeringOutput()
-	: SteeringOutput(Vec2(), 0)
+	: SteeringOutput(Vec2(), 0, false)
 {
 	// nothing
 }
 
-SteeringOutput::SteeringOutput(Vec2 const& linear, float angular)
+SteeringOutput::SteeringOutput(Vec2 const& linear, float angular, bool isKinematic)
 	: linear(linear),
-	angular(angular)
+	angular(angular),
+	isKinematic(isKinematic)
 {
 	// nothing
 }

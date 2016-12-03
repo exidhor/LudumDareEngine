@@ -91,8 +91,6 @@ private:
 	float m_radius;
 };
 
-#define MAX_OFFSET_CHANGE 1.0f
-
 /**
 * Wander changes the orientation by a random amount then moves
 * the character forwards.
@@ -101,7 +99,8 @@ class KinematicWander : public KinematicSteering
 {
 public:
 	KinematicWander(float maxSpeed,
-					float maxRotation);
+					float maxRotation,
+					float maxOffsetChange = 0.2f);
 
 	/**
 	* Works out the desired steering and writes it into the given
@@ -118,4 +117,6 @@ private:
 	* The maximum rate at which the character can turn.
 	*/
 	float m_maxRotation;
+
+	float m_maxOffsetChange;
 };

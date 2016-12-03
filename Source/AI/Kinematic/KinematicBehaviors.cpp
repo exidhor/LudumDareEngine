@@ -32,6 +32,8 @@ KinematicSeek::KinematicSeek(float maxSpeed,
 void KinematicSeek::GiveSteering(SteeringOutput* output,
 								 TransformableLocation* character) const
 {
+	output->isKinematic = true;
+
 	// First work out the direction
 	output->linear = TargetedKinematicMovement::getTargetPosition();
 	output->linear -= character->GetPosition();
@@ -53,6 +55,8 @@ KinematicFlee::KinematicFlee(float maxSpeed,
 void KinematicFlee::GiveSteering(SteeringOutput* output,
 								 TransformableLocation* character) const
 {
+	output->isKinematic = true;
+
 	// First work out the direction
 	output->linear = character->GetPosition();
 	output->linear -= TargetedKinematicMovement::getTargetPosition();
@@ -79,6 +83,8 @@ KinematicArrive::KinematicArrive(float maxSpeed,
 void KinematicArrive::GiveSteering(SteeringOutput* output,
 								   TransformableLocation* character) const
 {
+	output->isKinematic = true;
+
 	// First work out the direction
 	output->linear = TargetedKinematicMovement::getTargetPosition();
 	output->linear -= character->GetPosition();
@@ -124,20 +130,24 @@ float KinematicArrive::GetRadius() const
 //||||||||||||||||||||||||||||||||||||||||||||||||||||||
 
 KinematicWander::KinematicWander(float maxSpeed,
-								 float maxRotation)
+								 float maxRotation,
+								 float maxOffsetChange)
 	: KinematicSteering(maxSpeed),
-	m_maxRotation(maxRotation)
+	m_maxRotation(maxRotation),
+	m_maxOffsetChange(maxOffsetChange)
 { }
 
 void KinematicWander::GiveSteering(SteeringOutput* output,
 								   TransformableLocation* character) const
 {
+	output->isKinematic = true;
+
 	// Move forward in the current direction
 	output->linear = character->GetOrientationAsVector();
 	output->linear *= KinematicSteering::GetMaxSpeed();
 
 	// Turn a little
-	float change = MathHelper::RandomBinomial(MAX_OFFSET_CHANGE);
+	float change = MathHelper::RandomBinomial(m_maxOffsetChange);
 	output->angular = change * m_maxRotation;
 }
 

@@ -16,7 +16,7 @@
 #define TIME_TO_TARGET 5.0f
 
 #define MAX_WANDER_SPEED 10
-#define MAX_WANDER_ROTATION 25
+#define MAX_WANDER_ROTATION 50
 
 #define NUMBER_RECTS 10
 
@@ -187,6 +187,7 @@ void init(std::vector<sf::RectangleShape> & rects, sf::Vector2u const& windowSiz
 		rects[i].setSize(getRandomSize(minSize, maxSize));
 		rects[i].setFillColor(getRandomColor());
 		rects[i].setPosition(getRandomPosition(windowSize));
+		rects[i].setOrigin(rects[i].getSize().x / 2, rects[i].getSize().y / 2);
 	}
 }
 

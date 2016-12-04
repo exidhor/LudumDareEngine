@@ -2,10 +2,10 @@
 #include "Main/Engine.hpp"
 
 /* explicit */ GameObject::GameObject(void)
-	: m_layer(-1),
-	m_ai(nullptr),
-	m_physics(nullptr),
-	m_render(nullptr)
+: m_layer(-1),
+m_ai(nullptr),
+m_physics(nullptr),
+m_render()
 {
 	// None
 }
@@ -25,7 +25,7 @@ int GameObject::GetLayer() const
 	return m_layer;
 }
 
-sf::Transformable* GameObject::GetTransformable() const
+sf::Transformable* GameObject::GetTransformable()
 {
-	return m_render->GetTranformable();
+	return m_render.GetTranformable();
 }

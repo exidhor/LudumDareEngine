@@ -1,6 +1,6 @@
 #include <iostream>
+#include "Main/World.hpp"
 #include "Main/Engine.hpp"
-#include "Main/GameEngine.hpp"
 
 // Initializing the static attribute
 GameEngine * Engine::pGameEngineInstance = nullptr;

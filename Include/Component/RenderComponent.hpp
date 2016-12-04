@@ -10,12 +10,14 @@ public :
 
 	RenderComponent(const sf::Texture &texture, const sf::IntRect &rectangle);
 
-	sf::Transformable* GetTranformable();
+	sf::Transformable * GetTranformable();
 
 	void Enable();
 	void Disable();
 
 	bool IsAvailable() const;
+
+	sf::Sprite * GetSprite();
 
 protected :
 	virtual void draw(sf::RenderTarget &target, sf::RenderStates states) const;

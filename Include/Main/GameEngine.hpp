@@ -9,14 +9,14 @@
 
 // Forward declaration
 class Game;
+class World;
+class GameObject;
 
 #include <SFML/Audio.hpp>
-
-#include "Main/World.hpp"
 #include "Main/Singleton.hpp"
 #include "Memory/Container.hpp"
 #include "Memory/PoolAllocator.hpp"
-#include "Component/GameObject.hpp"
+
 #include "Component/AIComponent.hpp"
 #include "Component/RenderComponent.hpp"
 #include "Component/PhysicsComponent.hpp"

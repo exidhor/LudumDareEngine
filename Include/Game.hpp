@@ -7,16 +7,13 @@
 #ifndef __GAME_HPP
 #define __GAME_HPP
 
-#include "Main/Engine.hpp"
+#include "Component/GameObject.hpp"
 
 /// \class  Game
 /// \brief  Adapter class between engine and user
 class Game
 {
 public:
-
-    /// \brief  Default constructor
-    explicit Game(void);
 
     /// \brief  Default destructor
     virtual ~Game(void);
@@ -45,6 +42,10 @@ public:
 
     /// \Brief  Called after the engine release
     void OnPostExit(void);
+
+private:
+
+    GameObject * go;
 };
 
 #endif // __GAME_HPP

@@ -9,10 +9,10 @@
 
 // Forward declaration
 class GameEngine;
+class GameObject;
 
 #include <SFML/Audio.hpp>
 #include <SFML/Graphics.hpp>
-#include <Component/GameObject.hpp>
 
 /// \class  Engine
 /// \brief  Contains all static method to interact with the game engine

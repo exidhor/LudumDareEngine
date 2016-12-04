@@ -1,5 +1,6 @@
 #include <iostream>
 #include "Game.hpp"
+#include "Main/World.hpp"
 
 /* explicit */ GameEngine::GameEngine(void)
 : m_pGame(nullptr)

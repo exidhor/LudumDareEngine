@@ -41,7 +41,7 @@ public:
 
 	int GetLayer() const;
 
-	sf::Transformable* GetTransformable() const;
+	sf::Transformable* GetTransformable();
 
 private:
 
@@ -49,7 +49,7 @@ private:
 
 	AIComponent* m_ai;
 	PhysicsComponent* m_physics;
-	RenderComponent* m_render;
+	RenderComponent m_render;
 };
 
 

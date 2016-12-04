@@ -20,6 +20,9 @@ class Engine
 {
 public:
 
+    /// \brief  Shutdown the engine
+    static void Shutdown();
+
     /// \brief  Return a pointer on sf::Font
     /// \param  key A const reference on the key of the font
     /// \return A valid pointer on a font if the key exists, else nullptr
@@ -76,6 +79,26 @@ public:
     ///         nothing will happen
     /// \param A pointer on the resource to deallocate
     template <typename T> static void Deallocate(T * object);
+
+    /// \brief  Return a pointer on the window
+    /// \return A pointer on the window
+    static sf::RenderWindow * GetWindow();
+
+    /// \brief   Add a GameObject to the Active GameObject.
+    ///          Now it can is available for all the Engine
+    /// \param	gameObject : the GameObject to register
+    static void Register(GameObject * gameObject);
+
+    /// \brief	Remove a GameObject from the Active GameObject
+    /// \param	gameObject : the GameObject to remove
+    /// \return	True if the GameObject was removed, False otherwise
+    static bool Unregister(GameObject * gameObject);
+
+    /// \brief	Return all the GameObject which are in the same layer
+    ///         from the Active GameObject.
+    /// \param	layer : the layer we want
+    /// \param	output : all the GameObject found are stored into this vector
+    void GetLayer(int layer, std::vector<GameObject*> & output) const;
 
 private:
 

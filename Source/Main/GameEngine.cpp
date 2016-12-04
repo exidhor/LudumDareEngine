@@ -1,17 +1,21 @@
 #include <iostream>
-
 #include "Game.hpp"
 
 /* explicit */ GameEngine::GameEngine(void)
 : m_pGame(nullptr)
+, m_isRunning(false)
 , m_isInitialized(false)
+, m_pWorld(nullptr)
+, m_pWindow(nullptr)
 {
     // None
 }
 
 GameEngine::~GameEngine(void)
 {
-    // TODO
+    if(m_pGame != nullptr) delete m_pGame;
+    if(m_pWorld != nullptr) delete m_pWorld;
+    if(m_pWindow != nullptr) delete m_pWindow;
 }
 
 void GameEngine::Start(void)
@@ -43,6 +47,8 @@ void GameEngine::Run(void)
 
         lag += elapsed;
 
+        OnPreUpdate((float)elapsed);
+
         while(lag >= SECONDS_PER_UPDATE)
         {
             // Updating
@@ -50,6 +56,9 @@ void GameEngine::Run(void)
 
             // Retrieve elapsed time
             lag -= SECONDS_PER_UPDATE;
+
+            // Rendering
+            Render();
         }
     }
 
@@ -66,6 +75,19 @@ void GameEngine::OnPreInitialize(void)
 
 void GameEngine::Initialize(void)
 {
+    // World
+    // Allocating engine object
+    m_pWorld = new World(ENGINE_DEFAULT_WORLD_OBJECT_COUNT);
+
+    // Window
+    m_pWindow = new sf::RenderWindow(
+            sf::VideoMode(ENGINE_DEFAULT_WINDOW_SIZE_X,
+                          ENGINE_DEFAULT_WINDOW_SIZE_Y),
+                          ENGINE_DEFAULT_WINDOW_NAME);
+
+    // Game class
+    m_pGame = new Game();
+
     // See OnPreInitialize
     OnPreInitialize();
 
@@ -98,12 +120,13 @@ void GameEngine::OnPreUpdate(float dt)
 {
     // Calling callback method to permit
     // the user to process input
-    m_pGame->OnPreUpdate(dt);
+    sf::Event event;
+    while (m_pWindow->pollEvent(event))
+        m_pGame->OnPreUpdate(dt, event);
 }
 
 void GameEngine::Update(float dt)
 {
-    OnPreUpdate(dt);
     OnPostUpdate(dt);
 }
 
@@ -112,6 +135,22 @@ void GameEngine::OnPostUpdate(float dt)
     // Calling callback method to permit
     // the user to update the game
     m_pGame->OnPostUpdate(dt);
+}
+
+void GameEngine::Render(void)
+{
+    // Clear the buffer
+    m_pWindow->clear(sf::Color::Black);
+
+    // Getting renderer and draw them
+    m_renderers.clear();
+    m_pWorld->GetRenders(m_renderers);
+
+    for(const auto& it : m_renderers)
+        m_pWindow->draw(*it->GetComponent<RenderComponent>());
+
+    // Swap the buffer
+    m_pWindow->display();
 }
 
 void GameEngine::OnPreExit(void)

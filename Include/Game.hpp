@@ -27,10 +27,13 @@ public:
     /// \brief  Called after engine initialization
     void OnPostInitialize(void);
 
-    /// \brief  Called before engine update
+    /// \brief  Called until there's no more event to poll
+    ///         but always called before engine update
     ///         Used to process inputs
+    //
     /// \param  dt The elapsed time since the last update
-    void OnPreUpdate(float dt);
+    /// \param  event A reference on the event
+    void OnPreUpdate(float dt, sf::Event& event);
 
     /// \brief  Called after engine update
     ///         Used to update the game

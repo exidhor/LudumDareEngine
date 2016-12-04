@@ -24,14 +24,19 @@ void Game::OnPostInitialize(void)
     // Code
 }
 
-/// \brief  Called before engine update
+/// \brief  Called until there's no more event to poll
+///         but always called before engine update
 ///         Used to process inputs
+//
 /// \param  dt The elapsed time since the last update
-void Game::OnPreUpdate(float dt)
+/// \param  event A reference on the event
+void Game::OnPreUpdate(float dt, sf::Event& event)
 {
-    (void)dt;
-
-	std::cout << "bidon" << std::endl;
+    if(event.type == sf::Event::Closed)
+    {
+        // Shutdown the engine
+        Engine::Shutdown();
+    }
 }
 
 /// \brief  Called after engine update

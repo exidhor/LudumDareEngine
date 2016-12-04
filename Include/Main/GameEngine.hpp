@@ -10,6 +10,9 @@
 // Forward declaration
 class Game;
 
+#include <SFML/Audio.hpp>
+
+#include "Main/World.hpp"
 #include "Main/Singleton.hpp"
 #include "Memory/Container.hpp"
 #include "Memory/PoolAllocator.hpp"
@@ -19,6 +22,10 @@ class Game;
 #include "Component/PhysicsComponent.hpp"
 
 #define ENGINE_DEFAULT_POOL_SIZE 200
+#define ENGINE_DEFAULT_WINDOW_SIZE_X 800
+#define ENGINE_DEFAULT_WINDOW_SIZE_Y 600
+#define ENGINE_DEFAULT_WORLD_OBJECT_COUNT 200
+#define ENGINE_DEFAULT_WINDOW_NAME "LudumDare"
 
 /// \class  GameEngine
 /// \brief  Main class of the engine
@@ -47,6 +54,9 @@ private:
     // Encapsulate class GameEngine
     friend class Engine;
 
+    World * m_pWorld;              ///< The game world
+    sf::RenderWindow * m_pWindow;  ///< The engine graphic context
+
     Container < sf::Font        > m_fontContainer;        ///< The font container
     Container < sf::Texture     > m_textureContainer;     ///< The texture container
     Container < sf::SoundBuffer > m_soundBufferContainer; ///< The sound container
@@ -56,6 +66,8 @@ private:
     PoolAllocator < AIComponent      > m_aiComponentAllocator;     ///< The AI component allocator
     PoolAllocator < RenderComponent  > m_renderComponentAllocator; ///< The render component allocator
     PoolAllocator < PhysicsComponent > m_physicComponentAllocator; ///< The physic component allocator
+
+    std::vector < GameObject * > m_renderers; ///< The list of element to display, update each loop
 
     /// \brief   Fixed update (ups = update per second)
     ///          16.67 =  60 ups
@@ -67,6 +79,9 @@ private:
     /// \brief  Contains the game loop
     void Run(void);
 
+    /// \brief  Render the game
+    void Render(void);
+
     /// \brief  Called before engine initialization
     void OnPreInitialize(void);
 
@@ -74,6 +89,7 @@ private:
     void OnPostInitialize(void);
 
     /// \brief  Called before engine update
+    ///         Used to process inputs
     void OnPreUpdate(float dt);
 
     /// \brief  Called on engine update

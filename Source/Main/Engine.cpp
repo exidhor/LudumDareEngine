@@ -5,6 +5,11 @@
 // Initializing the static attribute
 GameEngine * Engine::pGameEngineInstance = nullptr;
 
+void Engine::Shutdown()
+{
+    pGameEngineInstance->m_isRunning = false;
+}
+
 void Engine::SetGameEngineInstance(GameEngine * pInstance)
 {
     pGameEngineInstance = pInstance;
@@ -79,4 +84,24 @@ void Engine::UnloadSoundBuffer(const std::string& key)
 void Engine::UnloadTexture(const std::string& key)
 {
     pGameEngineInstance->m_textureContainer.UnloadResource(key);
+}
+
+sf::RenderWindow * Engine::GetWindow()
+{
+    return pGameEngineInstance->m_pWindow;
+}
+
+void Engine::Register(GameObject * gameObject)
+{
+    pGameEngineInstance->m_pWorld->Register(gameObject);
+}
+
+bool Engine::Unregister(GameObject * gameObject)
+{
+    return pGameEngineInstance->m_pWorld->Unregister(gameObject);
+}
+
+void Engine::GetLayer(int layer, std::vector<GameObject*> & output) const
+{
+    pGameEngineInstance->m_pWorld->GetLayer(layer, output);
 }

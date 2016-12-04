@@ -5,12 +5,14 @@
 /// \version 0.1.0
 
 #pragma once
-
 #include <iostream>
 #include "Component/AIComponent.hpp"
 #include "Component/SoundComponent.hpp"
 #include "Component/RenderComponent.hpp"
 #include "Component/PhysicsComponent.hpp"
+
+#ifndef __GAME_OBJECT_HPP
+#define __GAME_OBJECT_HPP
 
 /// \class  GameObject
 /// \brief  Base class for all objects manipulated by the engine
@@ -35,26 +37,28 @@ public:
     template <typename T>
     void AddComponent(void);
 
-	template <typename T>
-	void RemoveComponent();
+    template <typename T>
+    void RemoveComponent();
 
-	void SetLayer(int layer);
+    void SetLayer(int layer);
 
-	int GetLayer() const;
+    int GetLayer() const;
 
-	sf::Transformable* GetTransformable();
+    sf::Transformable* GetTransformable();
 
-	Vec2 GetCenteredPosition() const;
+    Vec2 GetCenteredPosition() const;
 
 private:
 
-	int m_layer;
+    int m_layer;
 
-	AIComponent* m_ai;
-	SoundComponent * m_sound;
-	PhysicsComponent* m_physics;
-	RenderComponent m_render;
+    AIComponent* m_ai;
+    SoundComponent * m_sound;
+    PhysicsComponent* m_physics;
+    RenderComponent m_render;
 };
 
-
 #include "Component/GameObject.inl"
+
+#endif // __GAME_OBJECT_HPP
+

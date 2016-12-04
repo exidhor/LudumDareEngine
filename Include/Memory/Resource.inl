@@ -1,5 +1,3 @@
-#include "Memory/Resource.hpp"
-
 template <typename T>
 /* explicit */ Resource<T>::Resource()
 : m_resource()

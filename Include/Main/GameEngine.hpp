@@ -7,14 +7,7 @@
 #ifndef __GAME_ENGINE_HPP
 #define __GAME_ENGINE_HPP
 
-// Forward declaration
-class Game;
-class World;
-class GameObject;
-class PhysicEngine;
-
 #include <SFML/Audio.hpp>
-#include <Interface/Button.hpp>
 #include "Main/Singleton.hpp"
 #include "Memory/Container.hpp"
 #include "Memory/PoolAllocator.hpp"
@@ -23,6 +16,14 @@ class PhysicEngine;
 #include "Component/SoundComponent.hpp"
 #include "Component/RenderComponent.hpp"
 #include "Component/PhysicsComponent.hpp"
+
+#include "Interface/Button.hpp"
+
+// Forward declaration
+class Game;
+class World;
+class GameObject;
+class PhysicEngine;
 
 #define ENGINE_DEFAULT_POOL_SIZE 200
 #define ENGINE_DEFAULT_WINDOW_SIZE_X 800
@@ -50,10 +51,10 @@ public:
 
 private:
 
-	PhysicEngine * m_physicEngine;
-    Game * m_pGame;             ///< The game user class
-    bool   m_isRunning;         ///< Tells if the game is running
-    bool   m_isInitialized;     ///< The status of the game engine
+    Game * m_pGame;                 ///< The game user class
+    bool   m_isRunning;             ///< Tells if the game is running
+    bool   m_isInitialized;         ///< The status of the game engine
+    PhysicEngine * m_physicEngine;  ///< The physic engine
 
     // Encapsulate class GameEngine
     friend class Engine;

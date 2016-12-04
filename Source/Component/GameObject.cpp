@@ -1,5 +1,4 @@
 #include "Component/GameObject.hpp"
-#include "Main/Engine.hpp"
 
 /* explicit */ GameObject::GameObject(void)
 : m_layer(-1),

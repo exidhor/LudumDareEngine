@@ -1,4 +1,5 @@
 #include "Main/World.hpp"
+#include "Component/GameObject.hpp"
 
 World::World(unsigned reserveSize)
 {

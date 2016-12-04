@@ -8,7 +8,7 @@
 #define __POOL_ALLOCATOR_HPP
 
 #include <vector>
-#include "Resource.hpp"
+#include "Memory/Resource.hpp"
 
 /// \class  PoolAllocator
 /// \brief  Handle memory for a type T

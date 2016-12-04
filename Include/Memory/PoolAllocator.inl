@@ -1,5 +1,3 @@
-#include "Memory/PoolAllocator.hpp"
-
 template <typename T>
 /* explicit */ inline PoolAllocator<T>::PoolAllocator()
 {

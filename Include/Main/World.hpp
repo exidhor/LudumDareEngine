@@ -1,6 +1,9 @@
 #pragma once
-#include <vector>
+
+// Forward declaration
 #include "Component/GameObject.hpp"
+
+#include <vector>
 
 /**
  * \class World

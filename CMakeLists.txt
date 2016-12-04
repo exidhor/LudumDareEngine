@@ -36,7 +36,7 @@ IF ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "GNU")
 
     # For GCC, setting flags
     SET(CXX_RELEASE_FLAGS "-Wall -O3")
-    SET(CXX_DEBUG_FLAGS   "-Wall -Wextra -g")
+    SET(CXX_DEBUG_FLAGS   "-Wall -Wextra -g -Wno-reorder -Wno-unused-variable -Wno-sign-compare -Wno-unused-parameter -Wno-unused-but-set-variable")
 
 ELSEIF ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "MSVC")
     # using Visual Studio C++

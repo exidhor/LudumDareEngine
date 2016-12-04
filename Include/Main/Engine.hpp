@@ -13,12 +13,11 @@
     #define DEFAULT_TEXTURE_PATH "../../Res/"
 #endif
 
-// Forward declaration
-class GameEngine;
-class GameObject;
-
 #include <SFML/Audio.hpp>
 #include <SFML/Graphics.hpp>
+
+class GameObject;
+class GameEngine;
 
 /// \class  Engine
 /// \brief  Contains all static method to interact with the game engine

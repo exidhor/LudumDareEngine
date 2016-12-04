@@ -1,7 +1,9 @@
 #include <iostream>
 #include "Game.hpp"
 #include "Main/World.hpp"
+#include "Main/GameEngine.hpp"
 #include "Physic/PhysicEngine.hpp"
+
 
 /* explicit */ GameEngine::GameEngine(void)
 : m_pGame(nullptr)
@@ -15,10 +17,10 @@
 
 GameEngine::~GameEngine(void)
 {
-	if (m_physicEngine != nullptr) delete m_physicEngine;
-    if(m_pGame != nullptr) delete m_pGame;
-    if(m_pWorld != nullptr) delete m_pWorld;
-    if(m_pWindow != nullptr) delete m_pWindow;
+    if(m_pGame != nullptr)          delete m_pGame;
+    if(m_pWorld != nullptr)         delete m_pWorld;
+    if(m_pWindow != nullptr)        delete m_pWindow;
+    if (m_physicEngine != nullptr)  delete m_physicEngine;
 }
 
 void GameEngine::Start(void)

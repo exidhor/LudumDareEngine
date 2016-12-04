@@ -29,3 +29,10 @@ sf::Transformable* GameObject::GetTransformable()
 {
 	return m_render.GetTranformable();
 }
+
+Vec2 GameObject::GetCenteredPosition() const
+{
+	return m_render.GetTranformable()->getPosition() + 
+		   Vec2(m_render.GetSprite()->getGlobalBounds().width / 2,
+			    m_render.GetSprite()->getGlobalBounds().height / 2);
+}

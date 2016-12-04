@@ -43,6 +43,8 @@ public:
 
 	sf::Transformable* GetTransformable();
 
+	Vec2 GetCenteredPosition() const;
+
 private:
 
 	int m_layer;

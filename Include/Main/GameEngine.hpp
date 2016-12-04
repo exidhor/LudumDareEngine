@@ -6,6 +6,7 @@
 
 #ifndef __GAME_ENGINE_HPP
 #define __GAME_ENGINE_HPP
+#include "Physic/PhysicEngine.hpp"
 
 // Forward declaration
 class Game;
@@ -47,6 +48,7 @@ public:
 
 private:
 
+	PhysicEngine * m_physicEngine;
     Game * m_pGame;             ///< The game user class
     bool   m_isRunning;         ///< Tells if the game is running
     bool   m_isInitialized;     ///< The status of the game engine

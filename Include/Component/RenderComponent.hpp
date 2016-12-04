@@ -12,12 +12,16 @@ public :
 
 	sf::Transformable * GetTranformable();
 
+	const sf::Transformable * GetTranformable() const;
+
 	void Enable();
 	void Disable();
 
 	bool IsAvailable() const;
 
 	sf::Sprite * GetSprite();
+
+	const sf::Sprite * GetSprite() const;
 
 protected :
 	virtual void draw(sf::RenderTarget &target, sf::RenderStates states) const;

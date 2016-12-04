@@ -10,8 +10,14 @@ void PhysicEngine::Prepare(World const& world)
 {
 	m_quadTree.Clear();
 
-	// TODO : add all the go of the world into the QuadTree
-	//m_quadTree.Insert(...);
+	std::vector<GameObject*> go;
+	world.GetPhysics(go);
+	
+	for(unsigned i = 0; i < go.size(); i++)
+	{
+		m_quadTree.Insert(go[i]->GetComponent<PhysicsComponent>(),
+						  go[i]->GetComponent<PhysicsComponent>()->getCollider());
+	}
 }
 
 CollisionToken PhysicEngine::ShootRaycast(Ray const& ray)

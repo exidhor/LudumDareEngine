@@ -80,8 +80,6 @@ public :
 
 	void Prepare(World const& world);
 
-private :
-
 	CollisionToken ShootRaycast(Ray const& ray);
 
 	std::vector<CollisionToken> GetCollision(Ray const& ray);
@@ -90,6 +88,8 @@ private :
 
 	std::vector<PhysicsComponent*> GetCollision(Vec2 const& point);
 
+private :
+	
 	HitPoint Intersects(sf::FloatRect const& rect, Ray const& ray);
 
 	int GetClosestPoint(Ray const& ray, std::vector<CollisionToken> const& points) const;

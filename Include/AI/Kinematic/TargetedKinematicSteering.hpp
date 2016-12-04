@@ -20,10 +20,16 @@ public :
 							  const Location* target);
 
 	/**
-	 * \brief Return the target
+	 * \brief Return the target position
 	 * \return the target position
 	 */
 	Vec2 GetTargetPosition() const;
+
+	/**
+	* \brief Return the target orientation
+	* \return the target orientation
+	*/
+	float GetTargetOrientation() const;
 
 	/**
 	 * \brief Set the Target location

@@ -17,3 +17,8 @@ void TargetedKinematicSteering::SetTargetLocation(const Location * target)
 {
 	m_target = target;
 }
+
+float TargetedKinematicSteering::GetTargetOrientation() const
+{
+	return m_target->GetOrientation();
+}

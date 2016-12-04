@@ -4,10 +4,6 @@
 #include "Physic/Vec2.hpp"
 #include "Physic/Location/TransformableLocation.hpp"
 
-/// \class	Kinematic
-/// \brief	Handle an Object in time, with his
-///			Location, orientation, velocity and rotation
-
 /**
  * \class Kinematic
  * \brief Handle an Object in time, with his

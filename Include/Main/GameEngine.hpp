@@ -6,12 +6,12 @@
 
 #ifndef __GAME_ENGINE_HPP
 #define __GAME_ENGINE_HPP
-#include "Physic/PhysicEngine.hpp"
 
 // Forward declaration
 class Game;
 class World;
 class GameObject;
+class PhysicEngine;
 
 #include <SFML/Audio.hpp>
 #include "Main/Singleton.hpp"

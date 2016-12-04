@@ -9,21 +9,44 @@
 #define MAX_OBJECT_PER_LEVEL 10
 #define MAX_LEVEL            5
 
+class HitPoint
+{
+public:
+	HitPoint()
+		: hit(false)
+	{}
+
+	HitPoint(Vec2 const& point)
+		: point(point),
+		hit(true)
+	{}
+
+	operator Vec2() const
+	{
+		return point;
+	}
+
+	operator bool() const
+	{
+		return hit;
+	}
+
+	Vec2 point;
+	bool hit;
+};
+
 class CollisionToken
 {
 public :
 	CollisionToken()
-		: collisionFound(false),
-		collisionPoint(),
-		physicsComponent(nullptr)
+		: physicsComponent(nullptr)
 	{
 		// nothing
 	}
 
 	CollisionToken(Vec2 const& collisionPoint,
 				   PhysicsComponent* physicsComponent)
-		: collisionFound(true),
-		collisionPoint(collisionPoint),
+		: hitPoint(collisionPoint),
 		physicsComponent(physicsComponent)
 	{
 		// nothing
@@ -31,13 +54,23 @@ public :
 
 	operator Vec2() const
 	{
-		return collisionPoint;
+		return hitPoint;
 	}
 
-	bool collisionFound;
-	Vec2 collisionPoint;
+	operator bool() const
+	{
+		return hitPoint;
+	}
+
+	operator PhysicsComponent*() const
+	{
+		return physicsComponent;
+	}
+
+	HitPoint hitPoint;
 	PhysicsComponent* physicsComponent;
 };
+
 
 class PhysicEngine
 {
@@ -60,6 +93,17 @@ private :
 
 	int GetClosestPoint(Ray const& ray, std::vector<CollisionToken> const& points) const;
 
+	sf::FloatRect GetGlobalRect(Ray const& ray) const;
+
+	/*!
+	* \brief   Find the intersection (Collision point) between two lines
+	*          Source : http://www.ahristov.com/tutorial/geometry-games/intersection-segments.html
+	* \param   one : first ray
+	* \param   second : second ray
+	* \return  A HitPoint which store the Position of the intersection if there is one
+	*/
+	HitPoint GetHitPoint(Ray const& one, Ray const& second) const;
+	
 
 	QuadTree<PhysicsComponent*> m_quadTree;
 };

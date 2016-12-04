@@ -37,12 +37,12 @@ std::vector<CollisionToken> PhysicEngine::GetCollision(Ray const& ray)
 
 	for (int i = collisions.size() - 1; i >= 0; i--)
 	{
-		// todo : find how to compute the collision detection between a segment and a AABB
-		// and store the collisionPoint into the CollisionToken
-		//if (collisions[i]->getCollider().intersects(rect))
-		//{
-		//		collisionTokens.push_back(
-		//}
+		HitPoint hitPoint = Intersects(collisions[i]->getCollider(), ray);
+		
+		if(hitPoint)
+		{
+			collisionTokens.push_back(CollisionToken(hitPoint, collisions[i]));
+		}
 	}
 
 	return collisionTokens;
@@ -80,11 +80,12 @@ std::vector<PhysicsComponent*> PhysicEngine::GetCollision(Vec2 const& point)
 	return collisions;
 }
 
-CollisionToken PhysicEngine::Intersects(sf::FloatRect const& rect, Ray const& ray)
+HitPoint PhysicEngine::Intersects(sf::FloatRect const& rect, Ray const& ray)
 {
 	// Check if the start of the ray is inside the rect
-	bool isInside = rect.contains(ray.start);
+	bool rayIsInside = rect.contains(ray.start);
 
+	//		names for the edges
 	//				 top
 	//			 -----------
 	//    left  |			|  right
@@ -97,16 +98,70 @@ CollisionToken PhysicEngine::Intersects(sf::FloatRect const& rect, Ray const& ra
 	bool checkRightEdge = false;
 	bool checkBotEdge = false;
 
-	if(isInside)
+	bool startIsSmaller_x = ray.start.x < ray.end.x;
+	bool startIsSmaller_y = ray.start.y < ray.end.y;
+ 
+	if(rayIsInside)
 	{
-		
+		startIsSmaller_x = !startIsSmaller_x;
+		startIsSmaller_y = !startIsSmaller_y;
+	}
+
+	if (startIsSmaller_x)
+		checkLeftEdge = true;
+	else
+		checkRightEdge = true;
+
+	if (startIsSmaller_y)
+		checkTopEdge = true;
+	else
+		checkBotEdge = true;
+
+	HitPoint hitPoint_a;
+	HitPoint hitPoint_b;
+
+	if(checkLeftEdge)
+	{
+		hitPoint_a = GetHitPoint(ray, Ray(Vec2(rect.left, rect.top),
+							              Vec2(rect.left, rect.top + rect.height)));
+	}
+	else //if(checkRightEdge)
+	{
+		hitPoint_a = GetHitPoint(ray, Ray(Vec2(rect.left + rect.width, rect.top),
+								          Vec2(rect.left + rect.width, rect.top + rect.height)));
+	}
+	if (checkTopEdge)
+	{
+		hitPoint_b = GetHitPoint(ray, Ray(Vec2(rect.left, rect.top),
+								          Vec2(rect.left + rect.width, rect.top)));
+	}
+	else //if(checkBotEdge)
+	{
+		hitPoint_b = GetHitPoint(ray, Ray(Vec2(rect.left, rect.top + rect.height),
+							              Vec2(rect.left + rect.width, rect.top + rect.height)));
+	}
+
+	bool best_is_a;
+
+	// find the best hitpoint
+	if(hitPoint_a && !hitPoint_b)
+	{
+		return hitPoint_a;
+	}
+	else if(!hitPoint_a && hitPoint_b)
+	{
+		return hitPoint_b;
 	}
 	else
 	{
-		
-	}
+		float distance_to_a = ComputeSquareLength(ray.start, hitPoint_a);
+		float distance_to_b = ComputeSquareLength(ray.start, hitPoint_b);
 
-	return CollisionToken(); // todo : return an object set
+		if (distance_to_a < distance_to_b)
+			return hitPoint_a;
+		else
+			return hitPoint_b;
+	}
 }
 
 int PhysicEngine::GetClosestPoint(Ray const& ray, std::vector<CollisionToken> const& points) const
@@ -194,4 +249,10 @@ HitPoint PhysicEngine::GetHitPoint(Ray const& one, Ray const& second) const
 		return HitPoint();
 
 	return intersection;
+}
+
+float PhysicEngine::ComputeSquareLength(Vec2 const& point_a, Vec2 const& point_b)
+{
+	return (point_a.x - point_b.x) * (point_a.x - point_b.x)
+		+ (point_a.y - point_b.y) * (point_a.y - point_b.y);
 }

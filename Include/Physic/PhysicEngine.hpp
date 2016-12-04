@@ -52,6 +52,7 @@ public :
 		// nothing
 	}
 
+
 	operator Vec2() const
 	{
 		return hitPoint;
@@ -89,7 +90,7 @@ private :
 
 	std::vector<PhysicsComponent*> GetCollision(Vec2 const& point);
 
-	CollisionToken Intersects(sf::FloatRect const& rect, Ray const& ray);
+	HitPoint Intersects(sf::FloatRect const& rect, Ray const& ray);
 
 	int GetClosestPoint(Ray const& ray, std::vector<CollisionToken> const& points) const;
 
@@ -103,6 +104,13 @@ private :
 	* \return  A HitPoint which store the Position of the intersection if there is one
 	*/
 	HitPoint GetHitPoint(Ray const& one, Ray const& second) const;
+
+	/* \brief   Calculate the square Length of a segment.
+	* \param	point_a the beguining of the segment
+	* \param	point_b the end of the segment
+	* \return	The square Length of the segment
+	*/
+	float ComputeSquareLength(Vec2 const& point_a, Vec2 const& point_b);
 	
 
 	QuadTree<PhysicsComponent*> m_quadTree;

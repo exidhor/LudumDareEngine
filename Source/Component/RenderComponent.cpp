@@ -2,14 +2,14 @@
 
 RenderComponent::RenderComponent()
 	: m_sprite(),
-	m_available(true)
+	m_available(false)
 {
 	// nothing
 }
 
 RenderComponent::RenderComponent(sf::Texture const& texture)
 	: m_sprite(texture),
-	m_available(true)
+	m_available(false)
 {
 	// nothing
 }

@@ -7,6 +7,12 @@
 #ifndef __ENGINE_HPP
 #define __ENGINE_HPP
 
+#ifdef MVS
+    #define DEFAULT_TEXTURE_PATH "../LudumDare_Asset/Res/"
+#else
+    #define DEFAULT_TEXTURE_PATH ""
+#endif
+
 // Forward declaration
 class GameEngine;
 class GameObject;
@@ -111,6 +117,9 @@ private:
 
     // Pointer on the game engine
     static GameEngine * pGameEngineInstance;
+
+    /// \brief   Return the complete path depending the compiler
+    static std::string GetCompletePath(std::string const& path);
 };
 
 #include "Main/Engine.inl"

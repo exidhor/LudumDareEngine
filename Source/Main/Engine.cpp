@@ -37,7 +37,7 @@ sf::Font * Engine::LoadFont(const std::string& key, const std::string& path)
     if(nullptr == _font)
         return nullptr;
 
-    if(!_font->loadFromFile(path))
+    if(!_font->loadFromFile(GetCompletePath(path)))
         std::cerr << EngineString::ENGINE_FAILURE_FNF << std::endl;
 
     return _font;
@@ -51,7 +51,7 @@ sf::SoundBuffer * Engine::LoadSoundBuffer(const std::string& key, const std::str
     if(nullptr == _soundBuffer)
         return nullptr;
 
-    if(!_soundBuffer->loadFromFile(path))
+    if(!_soundBuffer->loadFromFile(GetCompletePath(path)))
         std::cerr << EngineString::ENGINE_FAILURE_FNF << std::endl;
 
     return _soundBuffer;
@@ -65,7 +65,7 @@ sf::Texture * Engine::LoadTexture(const std::string& key, const std::string& pat
     if(nullptr == _texture)
         return nullptr;
 
-    if(!_texture->loadFromFile(path))
+    if(!_texture->loadFromFile(GetCompletePath(path)))
         std::cerr << EngineString::ENGINE_FAILURE_FNF << std::endl;
 
     return _texture;
@@ -104,4 +104,9 @@ bool Engine::Unregister(GameObject * gameObject)
 void Engine::GetLayer(int layer, std::vector<GameObject*> & output) const
 {
     pGameEngineInstance->m_pWorld->GetLayer(layer, output);
+}
+
+std::string Engine::GetCompletePath(std::string const& path)
+{
+    return DEFAULT_TEXTURE_PATH + path;
 }

@@ -18,7 +18,7 @@ void Game::OnPreInitialize(void)
 void Game::OnPostInitialize(void)
 {
     // Loading the texture
-    Engine::LoadTexture("Flame", "../../Res/Secret.png");
+    Engine::LoadTexture("Flame", "Secret.png");
 
     go = Engine::Allocate<GameObject>();
     go->AddComponent<RenderComponent>();

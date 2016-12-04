@@ -10,7 +10,7 @@
 #ifdef MVS
     #define DEFAULT_TEXTURE_PATH "../LudumDare_Asset/Res/"
 #else
-    #define DEFAULT_TEXTURE_PATH ""
+    #define DEFAULT_TEXTURE_PATH "../../Res/"
 #endif
 
 // Forward declaration

@@ -10,7 +10,7 @@ sf::Sound * SoundComponent::GetSound()
     return &m_sound;
 }
 
-void SoundComponent::SetSoundBuffe(sf::SoundBuffer *buffer)
+void SoundComponent::SetSoundBuffer(sf::SoundBuffer *buffer)
 {
     m_sound.setBuffer(*buffer);
 }

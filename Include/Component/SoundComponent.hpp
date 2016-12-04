@@ -16,7 +16,7 @@ class SoundComponent
 public :
 	SoundComponent();
 
-    void SetSoundBuffe(sf::SoundBuffer * buffer);
+    void SetSoundBuffer(sf::SoundBuffer * buffer);
     sf::Sound * GetSound();
     void Play();
     void Stop();

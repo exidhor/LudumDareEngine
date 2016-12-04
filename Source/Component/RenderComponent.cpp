@@ -12,6 +12,8 @@ RenderComponent::RenderComponent(sf::Texture const& texture)
 	m_available(false)
 {
 	// nothing
+	m_sprite.setOrigin(m_sprite.getGlobalBounds().width / 2,
+					   m_sprite.getGlobalBounds().height / 2);
 }
 
 RenderComponent::RenderComponent(const sf::Texture &texture, const sf::IntRect &rectangle)
@@ -44,6 +46,14 @@ void RenderComponent::Disable()
 bool RenderComponent::IsAvailable() const
 {
 	return m_available;
+}
+
+void RenderComponent::SetTexture(sf::Texture const& texture)
+{
+	m_sprite.setTexture(texture);
+
+	m_sprite.setOrigin(m_sprite.getGlobalBounds().width / 2,
+					   m_sprite.getGlobalBounds().height / 2);
 }
 
 void RenderComponent::draw(sf::RenderTarget &target, sf::RenderStates states) const

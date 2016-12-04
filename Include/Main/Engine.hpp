@@ -8,7 +8,7 @@
 #define __ENGINE_HPP
 
 #ifdef MVS
-    #define DEFAULT_TEXTURE_PATH "../LudumDare_Asset/Res/"
+    #define DEFAULT_TEXTURE_PATH "../LudumDareEngine/Res/"
 #else
     #define DEFAULT_TEXTURE_PATH "../../Res/"
 #endif

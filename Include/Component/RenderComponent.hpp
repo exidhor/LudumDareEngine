@@ -19,6 +19,8 @@ public :
 
 	bool IsAvailable() const;
 
+	void SetTexture(sf::Texture const& texture);
+
 	sf::Sprite * GetSprite();
 
 	const sf::Sprite * GetSprite() const;

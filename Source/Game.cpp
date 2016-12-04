@@ -1,4 +1,5 @@
 #include "Game.hpp"
+#include "Main/Engine.hpp"
 
 /// \brief  Default destructor
 Game::~Game(void)
@@ -16,8 +17,13 @@ void Game::OnPreInitialize(void)
 ///         Used to construct objects
 void Game::OnPostInitialize(void)
 {
+    // Loading the texture
+    Engine::LoadTexture("Flame", "../../Res/Bakuman.png");
+
     go = Engine::Allocate<GameObject>();
     go->AddComponent<RenderComponent>();
+    sf::Sprite * sprite = go->GetComponent<RenderComponent>()->GetSprite();
+    sprite->setTexture(*Engine::GetTexture("Flame"));
 }
 
 /// \brief  Called until there's no more event to poll

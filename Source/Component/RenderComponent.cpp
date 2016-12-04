@@ -21,8 +21,7 @@ RenderComponent::RenderComponent(const sf::Texture &texture, const sf::IntRect &
 	// nothing
 }
 
-sf::Transformable* RenderComponent::GetTranformable()
-{
+sf::Transformable * RenderComponent::GetTranformable() {
 	return &m_sprite;
 }
 
@@ -47,4 +46,9 @@ void RenderComponent::draw(sf::RenderTarget &target, sf::RenderStates states) co
 	{
 		target.draw(m_sprite, states);
 	}
+}
+
+sf::Sprite *RenderComponent::GetSprite()
+{
+    return &m_sprite;
 }

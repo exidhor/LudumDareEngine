@@ -7,7 +7,7 @@
 #ifndef __GAME_HPP
 #define __GAME_HPP
 
-#include "Main/Engine.hpp"
+#include "Component/GameObject.hpp"
 
 /// \class  Game
 /// \brief  Adapter class between engine and user

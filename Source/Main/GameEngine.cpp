@@ -14,6 +14,7 @@
 
 GameEngine::~GameEngine(void)
 {
+	if (m_physicEngine != nullptr) delete m_physicEngine;
     if(m_pGame != nullptr) delete m_pGame;
     if(m_pWorld != nullptr) delete m_pWorld;
     if(m_pWindow != nullptr) delete m_pWindow;
@@ -86,6 +87,9 @@ void GameEngine::Initialize(void)
                           ENGINE_DEFAULT_WINDOW_SIZE_Y),
                           ENGINE_DEFAULT_WINDOW_NAME);
 
+	// Physic Engine
+	m_physicEngine = new PhysicEngine(m_pWindow->getViewport(m_pWindow->getView()));
+
     // Game class
     m_pGame = new Game();
 
@@ -124,6 +128,9 @@ void GameEngine::OnPreUpdate(float dt)
     sf::Event event;
     while (m_pWindow->pollEvent(event))
         m_pGame->OnPollEvent(dt, event);
+
+	// Prepare the PhysicEngine to be able to handle the physics
+	m_physicEngine->Prepare(*m_pWorld);
 }
 
 void GameEngine::Update(float dt)

@@ -18,12 +18,14 @@ void Game::OnPreInitialize(void)
 void Game::OnPostInitialize(void)
 {
     // Loading the texture
-    Engine::LoadTexture("Flame", "../../Res/Bakuman.png");
+    Engine::LoadTexture("Flame", "../../Res/Secret.png");
 
     go = Engine::Allocate<GameObject>();
     go->AddComponent<RenderComponent>();
     sf::Sprite * sprite = go->GetComponent<RenderComponent>()->GetSprite();
     sprite->setTexture(*Engine::GetTexture("Flame"));
+    Engine::Register(go);
+    std::cout << std::endl;
 }
 
 /// \brief  Called until there's no more event to poll

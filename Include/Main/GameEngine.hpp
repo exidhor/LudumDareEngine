@@ -67,7 +67,7 @@ private:
     PoolAllocator < RenderComponent  > m_renderComponentAllocator; ///< The render component allocator
     PoolAllocator < PhysicsComponent > m_physicComponentAllocator; ///< The physic component allocator
 
-    std::vector < GameObject * > m_renderers; ///< The list of element to display, update each loop
+    std::vector < GameObject * > m_renderers_cache; ///< The list of element to display, update each loop
 
     /// \brief   Fixed update (ups = update per second)
     ///          16.67 =  60 ups

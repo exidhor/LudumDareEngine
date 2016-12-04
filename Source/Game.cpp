@@ -30,7 +30,7 @@ void Game::OnPostInitialize(void)
 //
 /// \param  dt The elapsed time since the last update
 /// \param  event A reference on the event
-void Game::OnPreUpdate(float dt, sf::Event& event)
+void Game::OnPollEvent(float dt, sf::Event& event)
 {
     if(event.type == sf::Event::Closed)
     {

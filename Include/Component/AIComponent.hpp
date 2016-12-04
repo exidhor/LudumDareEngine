@@ -2,7 +2,7 @@
 #include "AI/Kinematic/Kinematic.hpp"
 #include "AI/Kinematic/KinematicSteering.hpp"
 
-class GameObject;
+class GameObject; // todo doc
 
 class AIComponent
 {

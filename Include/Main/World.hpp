@@ -10,12 +10,13 @@ public :
 	void Register(GameObject * gameObject);
 	bool Unregister(GameObject * gameObject);
 
-	std::vector<GameObject*> GetDrawable() const;
-
-	std::vector<GameObject*> GetPhysics() const;
-
-	std::vector<GameObject*> GetLayer(int layer) const;
+	void GetDrawable(std::vector<GameObject*> & output) const;
+	void GetSortedDrawable(std::vector<GameObject*> & output) const;
+	void GetPhysics(std::vector<GameObject*> & output) const;
+	void GetLayer(int layer, std::vector<GameObject*> & output) const;
 
 private :
+	void Sort(std::vector<GameObject*>& vector) const;
+
 	std::vector<GameObject*> m_active;
 };

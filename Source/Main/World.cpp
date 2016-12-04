@@ -24,27 +24,70 @@ bool World::Unregister(GameObject * gameObject)
 	return false;
 }
 
-std::vector<GameObject*> World::GetDrawable() const
+void World::GetDrawable(std::vector<GameObject*> & output) const
 {
-	std::vector<GameObject*> drawable;
-
 	for(unsigned i = 0; i < m_active.size(); i++)
 	{
 		if(m_active[i]->GetComponent<RenderComponent>() != nullptr)
 		{
-			drawable.push_back(m_active[i]);
+			output.push_back(m_active[i]);
 		}
 	}
-
-	return drawable;
 }
 
-std::vector<GameObject*> World::GetPhysics() const
+void World::GetSortedDrawable(std::vector<GameObject*> & output) const
 {
-	return std::vector<GameObject*>(); // todo 
+	GetDrawable(output);
+
+	Sort(output);
 }
 
-std::vector<GameObject*> World::GetLayer(int layer) const
+void World::GetPhysics(std::vector<GameObject*> & output) const
 {
-	return std::vector<GameObject*>(); // todo 
+	for(unsigned i = 0; i < m_active.size(); i++)
+	{
+		if(m_active[i]->GetComponent<PhysicsComponent>() != nullptr)
+		{
+			output.push_back(m_active[i]);
+		}
+	}
+}
+
+void World::GetLayer(int layer, std::vector<GameObject*> & output) const
+{
+	for(unsigned i = 0; i < m_active.size(); i++)
+	{
+		if(m_active[i]->GetLayer() == layer)
+		{
+			output.push_back(m_active[i]);
+		}
+	}
+}
+
+void World::Sort(std::vector<GameObject*>& vector) const
+{
+	struct
+	{
+		bool operator()(GameObject* a, GameObject* b)
+		{
+			sf::Vector2f const& a_position = a->GetTransformable()->getPosition();
+			sf::Vector2f const& b_position = b->GetTransformable()->getPosition();
+
+			if(a_position.y < b_position.y)
+			{
+				return true;
+			}
+			
+			if(a_position.y == b_position.y)
+			{
+				return a_position.x < b_position.x;
+			}
+
+			return false;
+		}
+
+	} compare;
+
+
+	std::sort(vector.begin(), vector.end(), compare);
 }

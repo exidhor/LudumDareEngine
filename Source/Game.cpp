@@ -30,6 +30,8 @@ void Game::OnPostInitialize(void)
 void Game::OnPreUpdate(float dt)
 {
     (void)dt;
+
+	std::cout << "bidon" << std::endl;
 }
 
 /// \brief  Called after engine update

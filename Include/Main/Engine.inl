@@ -42,6 +42,13 @@ inline PhysicsComponent * Engine::Allocate<PhysicsComponent>()
     return pGameEngineInstance->m_physicComponentAllocator.Allocate();
 }
 
+template <>
+inline SoundComponent * Engine::Allocate<SoundComponent>()
+{
+    // SoundComponent specialization
+    return pGameEngineInstance->m_soundComponentAllocator.Allocate();
+}
+
 template <typename T>
 inline void Engine::Deallocate(T * object)
 {
@@ -81,4 +88,11 @@ inline void Engine::Deallocate<PhysicsComponent>(PhysicsComponent * object)
 {
     // PhysicsComponent specialization
     pGameEngineInstance->m_physicComponentAllocator.Deallocate(object);
+}
+
+template <>
+inline void Engine::Deallocate<SoundComponent>(SoundComponent * object)
+{
+    // SoundComponent specialization
+    pGameEngineInstance->m_soundComponentAllocator.Deallocate(object);
 }

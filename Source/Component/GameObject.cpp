@@ -4,6 +4,7 @@
 /* explicit */ GameObject::GameObject(void)
 : m_layer(-1),
 m_ai(nullptr),
+m_sound(nullptr),
 m_physics(nullptr),
 m_render()
 {

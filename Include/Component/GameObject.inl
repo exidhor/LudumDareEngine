@@ -43,6 +43,12 @@ inline RenderComponent * GameObject::GetComponent<RenderComponent>(void)
 }
 
 template <>
+inline SoundComponent * GameObject::GetComponent<SoundComponent>(void)
+{
+    return m_sound;
+}
+
+template <>
 inline void GameObject::AddComponent<RenderComponent>(void)
 {
     m_render.Enable();
@@ -63,6 +69,12 @@ inline void GameObject::AddComponent<AIComponent>(void)
 }
 
 template <>
+inline void GameObject::AddComponent<SoundComponent>(void)
+{
+    m_sound = Engine::Allocate<SoundComponent>();
+}
+
+template <>
 inline void GameObject::RemoveComponent<PhysicsComponent>()
 {
     Engine::Deallocate<PhysicsComponent>(m_physics);
@@ -80,4 +92,11 @@ template <>
 inline void GameObject::RemoveComponent<RenderComponent>()
 {
     m_render.Disable();
+}
+
+template <>
+inline void GameObject::RemoveComponent<SoundComponent>()
+{
+    Engine::Deallocate<SoundComponent>(m_sound);
+    m_sound = nullptr;
 }

@@ -19,6 +19,7 @@ class PhysicEngine;
 #include "Memory/PoolAllocator.hpp"
 
 #include "Component/AIComponent.hpp"
+#include "Component/SoundComponent.hpp"
 #include "Component/RenderComponent.hpp"
 #include "Component/PhysicsComponent.hpp"
 
@@ -66,6 +67,7 @@ private:
     PoolAllocator < sf::Sprite       > m_spriteAllocator;          ///< The sprite allocator
     PoolAllocator < GameObject       > m_gameObjectAllocator;      ///< The game object Allocator
     PoolAllocator < AIComponent      > m_aiComponentAllocator;     ///< The AI component allocator
+    PoolAllocator < SoundComponent   > m_soundComponentAllocator;  ///< The AI component allocator
     PoolAllocator < RenderComponent  > m_renderComponentAllocator; ///< The render component allocator
     PoolAllocator < PhysicsComponent > m_physicComponentAllocator; ///< The physic component allocator
 

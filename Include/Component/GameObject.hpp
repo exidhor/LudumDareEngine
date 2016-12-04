@@ -8,6 +8,7 @@
 
 #include <iostream>
 #include "Component/AIComponent.hpp"
+#include "Component/SoundComponent.hpp"
 #include "Component/RenderComponent.hpp"
 #include "Component/PhysicsComponent.hpp"
 
@@ -50,6 +51,7 @@ private:
 	int m_layer;
 
 	AIComponent* m_ai;
+	SoundComponent * m_sound;
 	PhysicsComponent* m_physics;
 	RenderComponent m_render;
 };

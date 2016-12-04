@@ -4,7 +4,10 @@
 
 #define QUADTREE_ARRAY_SIZE 4 // because it's a "quad" tree 
 
-
+/**
+ * \class QuadTreeNode
+ * \brief Represent a level of the QuadTree
+ */
 template<class Object>
 class QuadTreeNode
 {
@@ -67,6 +70,11 @@ private:
 	*/
 	int GetIndex(sf::FloatRect const& rect);
 
+	/**
+	 * \brief	Try to find the index of the Object
+	 * \param	object : the object to search
+	 * \return	the index of the object if found, -1 otherwise
+	 */
 	int FindIndex(Object object);
 
 private:

@@ -24,7 +24,7 @@ bool World::Unregister(GameObject * gameObject)
 	return false;
 }
 
-void World::GetDrawable(std::vector<GameObject*> & output) const
+void World::GetRenders(std::vector<GameObject*> & output) const
 {
 	for(unsigned i = 0; i < m_active.size(); i++)
 	{
@@ -35,9 +35,9 @@ void World::GetDrawable(std::vector<GameObject*> & output) const
 	}
 }
 
-void World::GetSortedDrawable(std::vector<GameObject*> & output) const
+void World::GetSortedRenders(std::vector<GameObject*> & output) const
 {
-	GetDrawable(output);
+	GetRenders(output);
 
 	Sort(output);
 }

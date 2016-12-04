@@ -122,7 +122,7 @@ void GameEngine::OnPreUpdate(float dt)
     // the user to process input
     sf::Event event;
     while (m_pWindow->pollEvent(event))
-        m_pGame->OnPreUpdate(dt, event);
+        m_pGame->OnPollEvent(dt, event);
 }
 
 void GameEngine::Update(float dt)
@@ -143,10 +143,10 @@ void GameEngine::Render(void)
     m_pWindow->clear(sf::Color::Black);
 
     // Getting renderer and draw them
-    m_renderers.clear();
-    m_pWorld->GetRenders(m_renderers);
+    m_renderers_cache.clear();
+    m_pWorld->GetRenders(m_renderers_cache);
 
-    for(const auto& it : m_renderers)
+    for(const auto& it : m_renderers_cache)
         m_pWindow->draw(*it->GetComponent<RenderComponent>());
 
     // Swap the buffer

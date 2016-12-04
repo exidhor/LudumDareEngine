@@ -33,7 +33,7 @@ public:
     //
     /// \param  dt The elapsed time since the last update
     /// \param  event A reference on the event
-    void OnPreUpdate(float dt, sf::Event& event);
+    void OnPollEvent(float dt, sf::Event& event);
 
     /// \brief  Called after engine update
     ///         Used to update the game

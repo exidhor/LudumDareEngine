@@ -48,7 +48,8 @@ void Game::OnPollEvent(float dt, sf::Event& event)
 /// \brief  dt The elapsed time since the last update
 void Game::OnPostUpdate(float dt)
 {
-    (void)dt;
+    go->GetTransformable()->move(100.0f * dt, 100.0f * dt);
+    go->GetTransformable()->rotate(0.5f);
 }
 
 /// \brief  Called before the engine release

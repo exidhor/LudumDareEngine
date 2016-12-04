@@ -19,6 +19,7 @@ SET(COMPONENT_HEADER
         ${COMPONENT_INC_PATH}/GameObject.inl
         ${COMPONENT_INC_PATH}/AIComponent.hpp
         ${COMPONENT_INC_PATH}/PhysicsComponent.hpp
+        ${COMPONENT_INC_PATH}/SoundComponent.hpp
         ${COMPONENT_INC_PATH}/RenderComponent.hpp)
 
 # Adding source to the target

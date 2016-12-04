@@ -1,11 +1,5 @@
 #include "Game.hpp"
 
-/// \brief  Default constructor
-/* explicit */ Game::Game()
-{
-    // Code
-}
-
 /// \brief  Default destructor
 Game::~Game(void)
 {
@@ -19,9 +13,11 @@ void Game::OnPreInitialize(void)
 }
 
 /// \brief  Called after engine initialization
+///         Used to construct objects
 void Game::OnPostInitialize(void)
 {
-    // Code
+    go = Engine::Allocate<GameObject>();
+    go->AddComponent<RenderComponent>();
 }
 
 /// \brief  Called until there's no more event to poll

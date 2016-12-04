@@ -15,9 +15,6 @@ class Game
 {
 public:
 
-    /// \brief  Default constructor
-    explicit Game(void);
-
     /// \brief  Default destructor
     virtual ~Game(void);
 
@@ -45,6 +42,10 @@ public:
 
     /// \Brief  Called after the engine release
     void OnPostExit(void);
+
+private:
+
+    GameObject * go;
 };
 
 #endif // __GAME_HPP

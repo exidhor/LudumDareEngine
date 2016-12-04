@@ -1,3 +1,5 @@
+#include "Main/Engine.hpp"
+
 template <typename T>
 inline T * GameObject::GetComponent(void)
 {
@@ -41,25 +43,39 @@ inline RenderComponent * GameObject::GetComponent<RenderComponent>(void)
 }
 
 template <>
+inline void GameObject::AddComponent<RenderComponent>(void)
+{
+    m_render->Enable();
+}
+
+template <>
 inline void GameObject::AddComponent<PhysicsComponent>(void)
 {
-	std::cout << "Add physic component" << std::endl;
+    m_physics = Engine::Allocate<PhysicsComponent>();
 }
 
 template <>
 inline void GameObject::AddComponent<AIComponent>(void)
 {
-	std::cout << "Add ai component" << std::endl;
+    m_ai = Engine::Allocate<AIComponent>();
 }
 
 template <>
 inline void GameObject::RemoveComponent<PhysicsComponent>()
 {
+    Engine::Deallocate<PhysicsComponent>(m_physics);
 	m_physics = nullptr;
 }
 
 template <>
 inline void GameObject::RemoveComponent<AIComponent>()
 {
+    Engine::Deallocate<AIComponent>(m_ai);
 	m_ai = nullptr;
+}
+
+template <>
+inline void GameObject::RemoveComponent<RenderComponent>()
+{
+    m_render->Disable();
 }

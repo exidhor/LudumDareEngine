@@ -1,5 +1,7 @@
 #include "Game.hpp"
 #include "Main/Engine.hpp"
+#include "Component/GameObject.hpp"
+#include "Interface/Button.hpp"
 
 /// \brief  Default destructor
 Game::~Game(void)
@@ -41,6 +43,15 @@ void Game::OnPollEvent(float dt, sf::Event& event)
         // Shutdown the engine
         Engine::Shutdown();
     }
+    else if(event.type == sf::Event::MouseButtonPressed)
+    {
+        button->execute(event);
+    }
+    // TODO : For hover button effect
+    /*else if(event.type == sf::Event::MouseMoved)
+    {
+
+    }*/
 }
 
 /// \brief  Called after engine update

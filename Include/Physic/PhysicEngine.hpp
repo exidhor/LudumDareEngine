@@ -105,11 +105,12 @@ private :
 	*/
 	HitPoint GetHitPoint(Ray const& one, Ray const& second) const;
 
-	/* \brief   Calculate the square Length of a segment.
-	* \param	point_a the beguining of the segment
-	* \param	point_b the end of the segment
-	* \return	The square Length of the segment
-	*/
+	/*!
+	 * \brief   Calculate the square Length of a segment.
+	 * \param	point_a the begining of the segment
+	 * \param	point_b the end of the segment
+	 * \return	The square Length of the segment
+	 */
 	float ComputeSquareLength(Vec2 const& point_a, Vec2 const& point_b);
 	
 

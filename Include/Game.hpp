@@ -6,8 +6,10 @@
 
 #ifndef __GAME_HPP
 #define __GAME_HPP
+#include <SFML/Graphics.hpp>
 
-#include "Component/GameObject.hpp"
+class GameObject;
+class Button;
 
 /// \class  Game
 /// \brief  Adapter class between engine and user
@@ -46,6 +48,7 @@ public:
 private:
 
     GameObject * go;
+    Button* button;
 };
 
 #endif // __GAME_HPP

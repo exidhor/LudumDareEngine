@@ -42,6 +42,7 @@ INCLUDE(Main/CMakeLists.txt)
 INCLUDE(Memory/CMakeLists.txt)
 INCLUDE(Physic/CMakeLists.txt)
 INCLUDE(Component/CMakeLists.txt)
+INCLUDE(Interface/CMakeLists.txt)
 INCLUDE(AI/Kinematic/CMakeLists.txt)
 INCLUDE(Physic/QuadTree/CMakeLists.txt)
 INCLUDE(Physic/Location/CMakeLists.txt)
@@ -75,6 +76,8 @@ ADD_CUSTOM_COMMAND(TARGET ${TARGET_PUBLISHING} PRE_BUILD
         COMMAND ${CMAKE_COMMAND} -E make_directory ${TARGET_PATH}/Engine/Include/Memory
         COMMAND ${CMAKE_COMMAND} -E make_directory ${TARGET_PATH}/Engine/Source/Component
         COMMAND ${CMAKE_COMMAND} -E make_directory ${TARGET_PATH}/Engine/Include/Component
+        COMMAND ${CMAKE_COMMAND} -E make_directory ${TARGET_PATH}/Engine/Source/Interface
+        COMMAND ${CMAKE_COMMAND} -E make_directory ${TARGET_PATH}/Engine/Include/Interface
         COMMAND ${CMAKE_COMMAND} -E make_directory ${TARGET_PATH}/Engine/Source/AI/Kinematic
         COMMAND ${CMAKE_COMMAND} -E make_directory ${TARGET_PATH}/Engine/Include/AI/Kinematic
         COMMAND ${CMAKE_COMMAND} -E make_directory ${TARGET_PATH}/Engine/Source/Physic/Location

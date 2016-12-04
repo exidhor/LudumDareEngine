@@ -14,6 +14,7 @@ class GameObject;
 class PhysicEngine;
 
 #include <SFML/Audio.hpp>
+#include <Interface/Button.hpp>
 #include "Main/Singleton.hpp"
 #include "Memory/Container.hpp"
 #include "Memory/PoolAllocator.hpp"

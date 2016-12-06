@@ -9,7 +9,7 @@
 #include <SFML/Graphics.hpp>
 
 class GameObject;
-class Button;
+#include "Interface/Button.hpp"
 
 /// \class  Game
 /// \brief  Adapter class between engine and user

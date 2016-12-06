@@ -17,8 +17,6 @@
 #include "Component/RenderComponent.hpp"
 #include "Component/PhysicsComponent.hpp"
 
-#include "Interface/Button.hpp"
-
 // Forward declaration
 class Game;
 class World;
